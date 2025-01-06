@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}NATIONAL P.G. COLLEGE{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
+    <script src="https://kit.fontawesome.com/1ea33ebadd.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <img src="https://via.placeholder.com/50" alt="User Picture">
+            <div class="options">
+                <a href="#"><i class="fa-regular fa-user"></i></a>
+                <a href="#"><i class="fa-brands fa-square-whatsapp"></i></a>
+                <a href="#"><i class="fa-solid fa-robot"></i></a>
+                <a href="#"><i class="fa-solid fa-door-open"></i></a>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="top-header">
+                <img src="{% static 'image/schoollogo.png' %}" alt="">
+            </div>
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+    
+</body>
+</html>
