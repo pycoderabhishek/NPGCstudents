@@ -21,3 +21,4 @@ class Course(models.Model):
         return self.name
 class post(models.Model):
     name = models.CharField(max_length=200)
+
