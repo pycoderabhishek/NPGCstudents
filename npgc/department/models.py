@@ -7,17 +7,21 @@ class Department(models.Model):
     def __str__(self):
         return self.name
 
+class Type(models.Model):
+    name = models.CharField(max_length=200)
+    description = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return self.name
+
 class Course(models.Model):
     name = models.CharField(max_length=200)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
-    duration = models.IntegerField()  # Duration in years
-    credits = models.IntegerField()
-    course_type = models.CharField(max_length=50)
+    type = models.ForeignKey(Type, on_delete=models.CASCADE)
+    duration = models.IntegerField(blank=True,null=True)  # Duration in years
+    credits = models.IntegerField(blank=True,null=True)
     prerequisites = models.TextField(blank=True, null=True)
     syllabus_link = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return self.name
-class post(models.Model):
-    name = models.CharField(max_length=200)
-

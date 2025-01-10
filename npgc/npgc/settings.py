@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
      
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'npgcstudents',
+        'NAME': 'npgc',
         'USER': 'pycoders',
         'PASSWORD': '3104',
         'HOST': 'localhost',  # Aapka system ka public IP
