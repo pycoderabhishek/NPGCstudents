@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-l@!9gx!1c04u6&h)i9qp^9q4e4$_q-s)n53w!k(1cuxr-o&d*7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ["npgcstudents.pythonanywhere.com"]
+=======
+ALLOWED_HOSTS = [' npgcstudents.pythonanywhere.com']
+>>>>>>> c06cee101dbce67ad1a2ec2855a3c8911b4e31cb
 
 
 # Application definition
@@ -39,7 +43,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'department.apps.DepartmentConfig',
+<<<<<<< HEAD
 
+=======
+    'taksdata.apps.TaksdataConfig',
+    
+>>>>>>> c06cee101dbce67ad1a2ec2855a3c8911b4e31cb
 ]
 
 MIDDLEWARE = [
@@ -75,7 +84,6 @@ WSGI_APPLICATION = 'npgc.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
 <<<<<<< HEAD
@@ -88,19 +96,25 @@ DATABASES = {
 
 =======
      
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'npgc',
-        'USER': 'pycoders',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'npgcstudents$default',
+        'USER': 'npgcstudents',
         'PASSWORD': '3104',
+<<<<<<< HEAD
         'HOST': 'localhost',  # Aapka system ka public IP
         'PORT': '5432',
 >>>>>>> b72d071f65cf0b93dbdf128a551989db14b91de3
     }
+=======
+        'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
+ }
+>>>>>>> c06cee101dbce67ad1a2ec2855a3c8911b4e31cb
 }
 AUTH_USER_MODEL = 'user.User'
 LOGIN_URL = '/login/'  # Redirect to login page if user is not authenticated
 LOGIN_REDIRECT_URL = '/teacher/dashboard/'  # Default redirect after login (can be overridden)
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
+
 
 
 # Password validation
