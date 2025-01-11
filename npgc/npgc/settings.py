@@ -78,6 +78,7 @@ WSGI_APPLICATION = 'npgc.wsgi.application'
 
 DATABASES = {
     'default': {
+<<<<<<< HEAD
 
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'npgcstudents$default',
@@ -85,18 +86,34 @@ DATABASES = {
         'PASSWORD': 'database',
         'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
 
+=======
+     
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'npgc',
+        'USER': 'pycoders',
+        'PASSWORD': '3104',
+        'HOST': 'localhost',  # Aapka system ka public IP
+        'PORT': '5432',
+>>>>>>> b72d071f65cf0b93dbdf128a551989db14b91de3
     }
 }
+AUTH_USER_MODEL = 'user.User'
+LOGIN_URL = '/login/'  # Redirect to login page if user is not authenticated
+LOGIN_REDIRECT_URL = '/teacher/dashboard/'  # Default redirect after login (can be overridden)
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
