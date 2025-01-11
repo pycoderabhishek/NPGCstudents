@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from .models import Teacher,Student,User
 # Create your views here.
+@login 
 def home(request):
+    
     teacher = Teacher.objects.first()  # Replace with specific filter logic
     if not teacher:
         return render(request, 'home/home.html', {"error": "No teacher found"})
