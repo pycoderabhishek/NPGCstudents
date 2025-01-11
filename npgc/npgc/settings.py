@@ -87,16 +87,23 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+AUTH_USER_MODEL = 'user.User'
+LOGIN_URL = '/login/'  # Redirect to login page if user is not authenticated
+LOGIN_REDIRECT_URL = '/teacher/dashboard/'  # Default redirect after login (can be overridden)
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
