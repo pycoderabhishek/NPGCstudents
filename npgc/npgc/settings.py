@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l@!9gx!1c04u6&h)i9qp^9q4e4$_q-s)n53w!k(1cuxr-o&d*7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [' npgcstudents.pythonanywhere.com']
 
 
 # Application definition
@@ -78,21 +78,32 @@ WSGI_APPLICATION = 'npgc.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',  # Database file stored in the project directory
-    }
+     
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'npgcstudents$default',
+        'USER': 'npgcstudents',
+        'PASSWORD': '3104',
+        'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
+ }
 }
+AUTH_USER_MODEL = 'user.User'
+LOGIN_URL = '/login/'  # Redirect to login page if user is not authenticated
+LOGIN_REDIRECT_URL = '/teacher/dashboard/'  # Default redirect after login (can be overridden)
+LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
+
 
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS': {
+            'min_length': 8,
+        },
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',

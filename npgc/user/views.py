@@ -1,46 +1,52 @@
-from django.shortcuts import render
-from .models import Teacher,Student,User
-# Create your views here.
-@login 
-def home(request):
-    
-    teacher = Teacher.objects.first()  # Replace with specific filter logic
-    if not teacher:
-        return render(request, 'home/home.html', {"error": "No teacher found"})
-    return render(request, 'home/home.html', {"teacher": teacher})
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
+from .models import Teacher, Student
 
-# About View
-def about(request):
-    """
-    Renders the about page.
-    """
-    context = {
-        'title': 'About Us',
-        'message': 'Learn more about My Website and our mission.',
-    }
-    return render(request, 'home/about.html', context)
+# Login View
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
 
-# Services View
-def services(request):
-    """
-    Renders the services page.
-    """
-    context = {
-        'title': 'Our Services',
-        'message': 'Explore the services we offer at My Website.',
-    }
-    return render(request, 'home/services.html', context)
+        # Debugging: Print username and password
+        print(f"Username: {username}, Password: {password}")
 
-# Contact View
+        user = authenticate(request, username=username, password=password)
 
-def contact(request):
-    """
-    Renders the contact page.
-    """
-    
-    context = {
-        'title': 'Contact Us',
-        'message': 'Get in touch with us for any inquiries or support.',
-    }
-    return render(request, 'home/contact.html', context)
+        if user is not None:
+            login(request, user)
+            if user.role == 'teacher':
+                return redirect('teacher_dashboard')
+            elif user.role == 'student':
+                return redirect('student_dashboard')
+            elif user.role == 'administrator':
+                return redirect('admin_dashboard')
+        else:
+            messages.error(request, "Invalid username or password")
+            return render(request, 'login.html')
+    return render(request, 'login.html')
+
+# Logout View
+@login_required
+def user_logout(request):
+    logout(request)
+    return redirect('login')
+
+# Teacher Dashboard
+@login_required
+def teacher_dashboard(request):
+    teacher = Teacher.objects.get(user=request.user)
+    return render(request, 'home/home.html', {'teacher': teacher})
+
+# Student Dashboard
+@login_required
+def student_dashboard(request):
+    student = Student.objects.get(user=request.user)
+    return render(request, 'home/home.html', {'student': student})
+
+# Administrator Dashboard
+@login_required
+def admin_dashboard(request):
+    return render(request, 'home/home.html')
