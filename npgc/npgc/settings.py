@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l@!9gx!1c04u6&h)i9qp^9q4e4$_q-s)n53w!k(1cuxr-o&d*7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["npgcstudents.pythonanywhere.com"]
 
 
 # Application definition
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user.apps.UserConfig',
     'department.apps.DepartmentConfig',
-    
+
 ]
 
 MIDDLEWARE = [
@@ -78,13 +78,13 @@ WSGI_APPLICATION = 'npgc.wsgi.application'
 
 DATABASES = {
     'default': {
-     
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'npgc',
-        'USER': 'pycoders',
-        'PASSWORD': '3104',
-        'HOST': 'localhost',  # Aapka system ka public IP
-        'PORT': '5432',
+
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'npgcstudents$default',
+        'USER': 'npgcstudents',
+        'PASSWORD': 'database',
+        'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
+
     }
 }
 
@@ -124,8 +124,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'  # URL to access static files in development
-STATICFILES_DIRS = [BASE_DIR / "static"]  # Directory for project-specific static files
-STATIC_ROOT = BASE_DIR / "staticfiles"   # Directory to collect static files for production
+STATICFILES_DIRS = [BASE_DIR / "static_root"]  # Directory for project-specific static files
+STATIC_ROOT = BASE_DIR / "staticfiles_root"   # Directory to collect static files for production
 
 MEDIA_URL = '/media/'  # URL to access media files in development
 MEDIA_ROOT = BASE_DIR / "media"  # Directory to store uploaded media files
