@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block link%}
+{%load static%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Groups</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="{% static 'css/whatsapp_groups_list.css' %}">
+{%endblock link%}
+{% block content %}
+  <nav>
+    <a href="{% url 'student_dashboard' %}"><i class="fa-solid fa-arrow-left"></i></a>
+    <h2 class="text-center">Assigned WhatsApp Groups</h2>
+  </nav>
+  <div class="container">
+    <p class="text-center text-muted">Here are the WhatsApp groups assigned to you. Click on the "Join Group" button to access them.</p>
+
+    {% for group in groups %}
+    <!-- Dynamic Group Cards -->
+    <div class="group-card">
+      <h5>{{ group.name }}</h5>
+      <p>{{ group.description }}</p>
+      <a href="{{ group.link }}" class="join-btn" target="_blank">Join Group</a>
+    </div>
+    {% empty %}
+    <p class="text-center text-muted">No WhatsApp groups assigned yet.</p>
+    {% endfor %}
+  </div>
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+{%endblock%}

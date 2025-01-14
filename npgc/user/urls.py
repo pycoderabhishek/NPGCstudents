@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path,include
 from django.shortcuts import redirect
 from . import views
 
@@ -17,4 +17,6 @@ urlpatterns = [
     path('admin/manage/events/', views.manage_events, name='manage_events'),
     path('admin/manage/assignments/', views.manage_assignments, name='manage_assignments'),
     path('admin/manage/notifications/', views.manage_notifications, name='manage_notifications'),
+    path('whatsapp',include('whatsapp.urls')),
+                   
 ]
