@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'department.apps.DepartmentConfig',
     'taksdata.apps.TaksdataConfig',
+    'whatsapp.apps.WhatsappConfig',
     
 ]
 
