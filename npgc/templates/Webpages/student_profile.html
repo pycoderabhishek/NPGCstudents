@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Navigation Bar -->
+<nav class="navbar">
+  <ul>
+    <li><a href="#profile-header">Home</a></li>
+    <li><a href="#personal-info">Personal Information</a></li>
+    <li><a href="#academic-info">Academic Information</a></li>
+    <li><a href="{% url 'student_assignment_view' %}">Assignments</a></li>
+    <li><a href="#enrollment-graduation">Enrollment & Graduation</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+  <div class="profile-header" id="profile-header">
+    <h1>Student Profile</h1>
+  </div>
+
+  <!-- Profile Picture Section -->
+  <div class="profile-picture">
+    <img src="{% static 'classroom/image.jpg' %}" alt="Profile Picture" id="profile_picture" width="100">
+  </div>
+
+  <!-- Personal Information Section -->
+  <div class="profile-section" id="personal-info">
+    <h2>Personal Information</h2>
+    <div class="info-item">
+      <label for="id">Student ID:</label>
+      <span id="id">{{ student.id }}</span>
+    </div>
+    <div class="info-item">
+      <label for="name">Name:</label>
+      <span id="name">{{ student.name }}</span>
+    </div>
+    <div class="info-item">
+      <label for="dob">Date of Birth:</label>
+      <span id="dob">{{ student.dob }}</span>
+    </div>
+    <div class="info-item">
+      <label for="gender">Gender:</label>
+      <span id="gender">{{ student.gender }}</span>
+    </div>
+    <div class="info-item">
+      <label for="contact">Contact:</label>
+      <span id="contact">{{ student.contact }}</span>
+    </div>
+    <div class="info-item">
+      <label for="address">Address:</label>
+      <span id="address">{{ student.address }}</span>
+    </div>
+    <div class="info-item">
+      <label for="guardian_name">Guardian Name:</label>
+      <span id="guardian_name">{{ student.guardian_name }}</span>
+    </div>
+    <div class="info-item">
+      <label for="guardian_contact">Guardian Contact:</label>
+      <span id="guardian_contact">{{ student.guardian_contact }}</span>
+    </div>
+    <div class="info-item">
+      <label for="email">Email Address:</label>
+      <span id="email">{{ student.email }}</span>
+    </div>
+  </div>
+
+  <!-- Academic Information Section -->
+  <div class="profile-section" id="academic-info">
+    <h2>Academic Information</h2>
+    <div class="info-item">
+      <label for="semester">Semester:</label>
+      <span id="semester">{{ student.semester }}</span>
+    </div>
+    <div class="info-item">
+      <label for="year">Year:</label>
+      <span id="year">{{ student.year }}</span>
+    </div>
+    <div class="info-item">
+      <label for="course">Course:</label>
+      <span id="course">{{ student.course }}</span>
+    </div>
+    <div class="info-item">
+      <label for="department">Department:</label>
+      <span id="department">{{ student.department }}</span>
+    </div>
+    <div class="info-item">
+      <label for="minor">Minor:</label>
+      <span id="minor">{{ student.minor }}</span>
+    </div>
+    <div class="info-item">
+      <label for="vocational">Vocational:</label>
+      <span id="vocational">{{ student.vocational }}</span>
+    </div>
+    <div class="info-item">
+      <label for="attendance">Attendance Percentage:</label>
+      <span id="attendance">{{ student.attendance }}</span>
+    </div>
+  </div>
+
+  <!-- Enrollment and Graduation Information Section -->
+  <div class="profile-section" id="enrollment-graduation">
+    <h2>Enrollment & Graduation</h2>
+    <div class="info-item">
+      <label for="admission_date">Admission Date:</label>
+      <span id="admission_date">{{ student.admission_date }}</span>
+    </div>
+    <div class="info-item">
+      <label for="graduated_on">Graduated On:</label>
+      <span id="graduated_on">{{ student.graduated_on }}</span>
+    </div>
+    <div class="info-item">
+      <label for="scholarship_status">Scholarship Status:</label>
+      <span id="scholarship_status">{{ student.scholarship_status }}</span>
+    </div>
+    <div class="info-item">
+      <label for="enrollment_status">Enrollment Status:</label>
+      <span id="enrollment_status">{{ student.enrollment_status }}</span>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'student_profile.css' %}">
+{% endblock %}

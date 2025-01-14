@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Registration</title>
+  <link rel="stylesheet" href="{% static 'event_registration.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+  <nav>
+    <a href="{% url 'event_details' event_id %}"><i class="fa-solid fa-arrow-left"></i></a>
+  </nav>
+  <div class="container">
+    <header>
+      <h1>Event Registration</h1>
+    </header>
+    <main>
+      <form id="registrationForm" method="POST">
+        {% csrf_token %}
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="event">Event:</label>
+        <select id="event" name="event" required>
+          {% for event in events %}
+          <option value="{{ event.id }}">{{ event.name }}</option>
+          {% endfor %}
+        </select>
+
+        <button type="submit">Register</button>
+      </form>
+    </main>
+  </div>
+  <script src="{% static 'event_registration.js' %}"></script>
+</body>
+
+</html>
+{% endblock %}

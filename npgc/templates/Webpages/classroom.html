@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% block head %}
+{% load static %}
+<title>Classroom Management</title>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+{% endblock head %}
+
+  {% block content %}
+
+
+
+<body>
+  <header>
+    <h1>Classroom Management</h1>
+  </header>
+  <main>
+    <section class="classroom-section">
+      <h2>BCA</h2>
+      <div class="semester">
+        <div class="semester-header">
+          {% comment %} <a href="{% url 'classroom:semester_detail' 1 %}">Semester-1</a> {% endcomment %}
+        </div>
+        <div class="semester-header">
+          <a href="#">Semester-3</a>
+        </div>
+        <div class="semester-header">
+          <a href="#">Semester-5</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="classroom-section">
+      <h2>B.Voc</h2>
+      <div class="semester">
+        <div class="semester-header">
+          <a href="#">Semester-1</a>
+        </div>
+        <div class="semester-header">
+          <a href="#">Semester-3</a>
+        </div>
+        <div class="semester-header">
+          <a href="#">Semester-5</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script src="{% static 'script.js' %}"></script>
+</body>
+
+</html>
+{% endblock content %}

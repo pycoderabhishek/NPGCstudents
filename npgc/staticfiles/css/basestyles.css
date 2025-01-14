@@ -1,0 +1,535 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    color: #333;
+    background: #f4f4f9;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar {
+    width: 7%;
+    height: 100vh;
+    background-color: #076924;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: fixed;
+    padding-top: 1rem;
+}
+
+.sidebar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: 2rem;
+}
+
+.sidebar .options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+}
+
+.sidebar .options a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    text-align: center;
+    padding: 0.8rem;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.sidebar img::after{
+  width: 100%;
+  padding: 10px;
+  background: #000;
+  /* position: relative; */
+}
+.sidebar .options a:hover {
+    background: #022401;
+    border-left: 5px solid #4ade80;
+    border-radius: 0 5px 5px 0;
+}
+
+.main-content {
+    margin-left: 7%;
+    flex: 1;
+}
+
+.top-header {
+    text-align: center;
+    background-color: #4ade80;
+  
+    
+}
+
+/* Profile Section */
+.profile-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    margin: 0 auto;
+}
+
+.profile-card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    
+    width: 100%;
+}
+
+/* Teacher Profile */
+.teacher-profile {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.basic_details {
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+.basic_details img.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+}
+
+.basic_details h1 {
+    font-size: 1.8em;
+    margin: 0 0 10px;
+    color: #444;
+}
+
+.basic_details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Profile Info */
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.profile > div {
+    flex: 1;
+    min-width: 300px;
+}
+
+.profile h4 {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.profile ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.profile ul li {
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    line-height: 1.4;
+}
+
+/* Contact and Availability */
+.teacher-profile div:last-child {
+    margin-top: 20px;
+}
+
+.teacher-profile a {
+    text-decoration: none;
+    color: #007bff;
+    margin-right: 10px;
+}
+
+.teacher-profile a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column;
+    }
+
+    .basic_details img.profile-pic {
+        width: 100px;
+        height: 100px;
+    }
+
+    .basic_details h1 {
+        font-size: 1.5em;
+    }
+}
+
+
+/* Workspace Container */
+.workspace {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 90px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Work Button */
+.workbut {
+    width: 20%;
+    margin-bottom: 20px;
+}
+
+.workbut a {
+    display: block;
+    padding: 10px 20px;
+    background-color: #247724;
+    color: white;
+    text-decoration: none;
+    border-radius: 10px;
+    text-align: left;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.workbut a:hover {
+    background-color: #319131;
+    transform: translateY(-2px);
+}
+
+/* Workspace Cards */
+.workspace-card {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+}
+
+/* Work Details */
+.workdetails {
+    flex: 1 1 calc(50% - 20px); /* Two columns in a row */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-height: 300px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.workdetails h3 {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #00ff15;
+    padding-bottom: 5px;
+}
+
+.scrollable {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    
+    background-color: #f9f9f9;
+}
+
+.scrollable ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.scrollable ul li {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .workspace-card {
+        flex-direction: column;
+    }
+
+    .workdetails {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .workbut a {
+        text-align: center;
+    }
+}
+
+.dropable {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.dropdown label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #555;
+}
+
+.dropdown select {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.9em;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+.dropdown select:focus {
+    outline: none;
+    border-color: #007bff;
+    background-color: #fff;
+}
+
+.numberofstudent {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f4f4f4;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    flex: 1;
+    text-align: center;
+    margin-left: 20px;
+}
+
+.numberofstudent p {
+    margin: 0;
+    font-size: 1em;
+    color: #333;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .dropable {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .numberofstudent {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+}
+.department-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.department-buttons button {
+    background: #4ade80;
+    color: #1e293b;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.department-buttons button:hover {
+    background: #1e40af;
+    color: white;
+}
+
+@media screen and (max-width: 768px) {
+    .profile-card {
+        width: 90%;
+    }
+
+    .department-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+/* === Reset Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #333; /* Neutral Dark Text */
+  background-color: #f8f9fa; /* Light Gray Background */
+  margin: 0;
+}
+
+/* === Utility Classes === */
+
+/* Spacing */
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+
+/* Typography */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.text-sm { font-size: 0.875rem; }
+.text-md { font-size: 1rem; }
+.text-lg { font-size: 1.25rem; }
+.text-xl { font-size: 1.5rem; }
+
+.font-light { font-weight: 300; }
+.font-normal { font-weight: 400; }
+.font-bold { font-weight: 700; }
+
+/* Colors */
+.text-primary { color: #007bff; }
+.text-secondary { color: #6c757d; }
+.text-success { color: #28a745; }
+.text-danger { color: #dc3545; }
+.text-warning { color: #ffc107; }
+.text-info { color: #17a2b8; }
+.text-light { color: #f8f9fa; }
+.text-dark { color: #343a40; }
+
+.bg-primary { background-color: #007bff; }
+.bg-secondary { background-color: #6c757d; }
+.bg-success { background-color: #28a745; }
+.bg-danger { background-color: #dc3545; }
+.bg-warning { background-color: #ffc107; }
+.bg-info { background-color: #17a2b8; }
+.bg-light { background-color: #f8f9fa; }
+.bg-dark { background-color: #343a40; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+}
+
+/* Layout */
+.container {
+  width: 100%;
+  background: #dff5df;
+  margin: 0 auto;
+  padding: 0;
+
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid {
+  display: grid;
+}
+
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.gap-1 { gap: 0.25rem; }
+.gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 1rem; }
+.gap-4 { gap: 1.5rem; }
+
+/* Borders */
+.rounded { border-radius: 4px; }
+.rounded-lg { border-radius: 8px; }
+.rounded-full { border-radius: 50%; }
+
+/* Shadows */
+.shadow {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Transitions */
+.transition {
+  transition: all 0.3s ease;
+}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block body%}
+<nav>
+  <a href="#">
+    <i class="fa-solid fa-arrow-left"></i>
+  </a>
+</nav>
+<div class="container">
+  <header>
+    <h1>Post Event Media</h1>
+    <p>Browse the photos and videos captured during the event!</p>
+  </header>
+
+  <section class="event-description">
+    <h2>Event Summary</h2>
+    <p id="event-summary">
+      This section provides a brief summary of the event, its purpose, and highlights. Feel free to customize it.
+    </p>
+  </section>
+
+  <section class="media-gallery">
+    <h2>Media Gallery</h2>
+    <div class="gallery-grid" id="gallery-grid">
+      <div class='gallery-item'>
+        <video src="https://www.w3schools.com/html/mov_bbb.mp4" controls id="modal-video" class="modal-item"></video>
+      </div>
+      <div class="gallery-item">
+        <img src="{% static 'spider.jpg' %}" alt="Media" id="modal-image" class="modal-item" />
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'post_event_media.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% endblock %}

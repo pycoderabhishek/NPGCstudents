@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    
     {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}NATIONAL P.G. COLLEGE{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    
+    {% block link %}{% endblock link %}
+    {% comment %} <style>
+      
+        .card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .nav-link {
+            font-weight: 500;
+        }
+    </style> {% endcomment %}
     <script src="https://kit.fontawesome.com/1ea33ebadd.js" crossorigin="anonymous"></script>
+    
 </head>
+
 <body>
-    <div class="container">
+    <div class="containere">
         <div class="sidebar">
             <img src="https://via.placeholder.com/50" alt="User Picture">
             <div class="options">
-                <a href="#"><i class="fa-regular fa-user"></i></a>
+                <!-- Link to user profile page -->
+                <a href="{% url 'teacher_dashboard' %}"><i class="fa-regular fa-user"></i></a>
+
+                <!-- Link to WhatsApp page -->
                 <a href="#"><i class="fa-brands fa-square-whatsapp"></i></a>
+
+                <!-- Link to robot page -->
                 <a href="#"><i class="fa-solid fa-robot"></i></a>
-                <a href="#"><i class="fa-solid fa-door-open"></i></a>
+                
+                <!-- Link to logout page -->
+                <a href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
             </div>
         </div>
         <div class="main-content">
@@ -25,8 +48,10 @@
                 <img src="{% static 'image/schoollogo.png' %}" alt="">
             </div>
             {% block content %}{% endblock %}
+            <a href="{% url 'logout' %}"><i class="fa-solid fa-door-open"></i></a>
         </div>
     </div>
     
 </body>
+
 </html>

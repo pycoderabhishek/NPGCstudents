@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'event_details.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details</title>
+  <link rel="stylesheet" href="{% static 'event_details.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+</head>
+
+<body>
+  <header>
+    <a href="{% url 'events_list' %}"><i class="fa-solid fa-arrow-left"></i></a>
+    <h1>Event Details</h1>
+  </header>
+  <div class="container">
+    <main>
+      <div id="eventDetails">
+        <!-- Event details will load dynamically -->
+        <h2>Tech Fest</h2>
+        <p><strong>Date:</strong> 2025-01-20</p>
+        <p><strong>Duration:</strong> 3 days</p>
+        <p><strong>Department:</strong> Computer Science</p>
+        <p><strong>Audience:</strong> All</p>
+        <p><strong>Event Type:</strong> Technical</p>
+
+        <p><strong>Location:</strong> </p>
+        <p><strong>Description:</strong> Tech Fest 4.0 organized by CS department</p>
+        <a href="{% url 'event_livestream' %}">Live Stream</a>
+        <img src="{% static 'spider.jpg' %}" alt="EventPoster">
+      </div>
+      <a href="{% url 'event_registration' %}" class="button">Register</a>
+    </main>
+  </div>
+</body>
+
+</html>
+{% endblock %}

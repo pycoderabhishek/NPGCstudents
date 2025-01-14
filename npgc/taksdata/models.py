@@ -1,6 +1,6 @@
 from django.db import models
 from department.models import Department,Course,Type
-from user.models import Teacher
+from user.models import Teacher,User,Student
 
 # Event Model
 class Event(models.Model):
