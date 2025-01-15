@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Group Form -->
+<form id="groupForm" class="mb-4" method="POST" action="'save_group' ">
+  {% csrf_token %}
+  <h4>Create or Update a Group</h4>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="groupName" class="form-label">Group Name</label>
+      <input type="text" id="groupName" name="groupName" class="form-control" placeholder="Enter Group Name" required>
+    </div>
+    <div class="col-md-6">
+      <label for="semester" class="form-label">Semester</label>
+      <input type="text" id="semester" name="semester" class="form-control" placeholder="Enter Semester" required>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="courseId" class="form-label">Course</label>
+      <input type="text" id="courseId" name="courseId" class="form-control" placeholder="Enter Course" required>
+    </div>
+    <div class="col-md-6">
+      <label for="departmentId" class="form-label">Department</label>
+      <input type="text" id="departmentId" name="departmentId" class="form-control" placeholder="Enter Department" required>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="groupType" class="form-label">Group Type</label>
+      <select id="groupType" name="groupType" class="form-select" required>
+        <option value="" disabled selected>Select Group Type</option>
+        <option value="Major">Major</option>
+        <option value="Minor">Minor</option>
+        <option value="Vocational">Vocational</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="groupLink" class="form-label">Group Link</label>
+      <input type="url" id="groupLink" name="groupLink" class="form-control" placeholder="Enter WhatsApp Group Link" required>
+    </div>
+    <div class="col-md-6">
+      <label for="groupDescription" class="form-label">Group Description</label>
+      <textarea id="groupDescription" name="groupDescription" class="form-control" rows="3" placeholder="Enter Group Description"></textarea>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success">Save Group</button>
+</form>
+
+<!-- Groups Table -->
+<h4>Existing Groups</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Department</th>
+      <th>Group Link</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in groups %}
+    <tr>
+      <td>{{ group.group_name }}</td>
+      <td>{{ group.semester }}</td>
+      <td>{{ group.course_id }}</td>
+      <td>{{ group.department_id }}</td>
+      <td><a href="{{ group.group_link }}" target="_blank" rel="noopener noreferrer">Join</a></td>
+      <td>
+        <form method="POST" action=" 'edit_group'" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+        </form>
+        <form method="POST" action=" 'delete_group' " style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6" class="text-center">No groups available.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

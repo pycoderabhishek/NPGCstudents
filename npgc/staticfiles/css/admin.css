@@ -19,10 +19,14 @@ body {
 .container {
     max-width: 1200px;
     display:flex;
-  
     margin-top: 50px;
 }
-
+.admin_menu{
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 2%;
+}
 .card {
     border-radius: 8px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
