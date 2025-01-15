@@ -3,5 +3,5 @@ from django.shortcuts import redirect
 from . import views
 
 urlpatterns = [
-    path('/',views.whatsapp_home,name='whatsapp_home')
+    path('',views.whatsapp_home,name='whatsapp_home')
 ]

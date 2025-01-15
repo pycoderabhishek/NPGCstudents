@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\pycoder.abhi\Desktop\project\New folder\NPGCstudents\setup"
+VIRTUAL_ENV="F:\NPGSTUDENTSPROJECT\NPGCstudents\setup"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
