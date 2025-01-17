@@ -8,7 +8,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}NATIONAL P.G. COLLEGE{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
-    
     {% block link %}{% endblock link %}
     {% comment %} <style>
       
@@ -31,7 +30,7 @@
             <img src="https://via.placeholder.com/50" alt="User Picture">
             <div class="options">
                 <!-- Link to user profile page -->
-                <a href="{% url 'teacher_dashboard' %}"><i class="fa-regular fa-user"></i></a>
+                <a href="{% url 'login' %}"><i class="fa-regular fa-user"></i></a>
 
                 <!-- Link to WhatsApp page -->
                 <a href="{% url 'whatsapp_home' %}"><i class="fa-brands fa-square-whatsapp"></i></a>

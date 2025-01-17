@@ -22,7 +22,7 @@ class Event(models.Model):
     name = models.CharField(max_length=200)
     date = models.DateField()
     description = models.TextField()
-    organizer = models.CharField(max_length=200)
+    organizer = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True, blank=True)
     location = models.CharField(max_length=200)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     type  = models.ForeignKey(Type, on_delete=models.CASCADE, null=True, blank=True)
