@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .models import Teacher, Student
+from django.contrib import messages
 
 # Login View
 def user_login(request):
@@ -49,4 +50,4 @@ def student_dashboard(request):
 # Administrator Dashboard
 @login_required
 def admin_dashboard(request):
-    return render(request, 'home/home.html')
+    return redirect('/admin')
