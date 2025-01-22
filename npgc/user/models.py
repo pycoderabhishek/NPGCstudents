@@ -36,6 +36,7 @@ class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     semester = models.IntegerField()
     year = models.IntegerField()
+    department = models.ForeignKey(Department, on_delete=models.CASCADE,null=True,blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
     minor = models.CharField(max_length=100, blank=True, null=True)
     vocational = models.CharField(max_length=100, blank=True, null=True)

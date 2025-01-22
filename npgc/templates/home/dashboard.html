@@ -1,0 +1,135 @@
+{% extends "base.html" %}
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/framework.css' %}">
+{% endblock link %}
+{% block content %}
+<div class="dashboard-container">
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="profile-img-container">
+            <img src="" alt="" class="profile-image">
+        </div>
+       <div class="profile-info">
+          <h1>{{ profile.user.username }}</h1>
+          <h5>{{profile.department}}</h5>
+          {% if user.role == "teacher" %}
+          <p>{{ profile.department_post }}</p>
+
+          {% else %}
+          <p><i>{{profile.course}}</i></p>
+          <p>Semester: {{ profile.semester }}, Year: {{ profile.year }}</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="profile-details">
+        {% if user.role == "teacher" %}
+        <p><strong>Qualifications:</strong> {{ profile.qualification }}</p>
+        <p><strong>Specialization:</strong> {{ profile.specialization }}</p>
+        <p><strong>Date of Joining:</strong> {{ profile.date_of_joining|date:"d M Y" }}</p>
+        <p><strong>Experience:</strong> {{ profile.experience_years }} years</p>
+        <p><strong>Subjects Assigned:</strong> {{ profile.subjects_assigned }}</p>
+        {% else %}
+        <p><strong>Contact:</strong> {{ profile.contact }}</p>
+        <p><strong>Date of Birth:</strong> {{ profile.date_of_birth|date:"d M Y" }}</p>
+        <p><strong>Address:</strong> {{ profile.address }}</p>
+        <p><strong>Guardian:</strong> {{ profile.guardian_name }} ({{ profile.guardian_contact }})</p>
+        <p><strong>Scholarship Status:</strong> {{ profile.scholarship_status }}</p>
+        <p><strong>Attendance:</strong> {{ profile.attendance_percentage }}%</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- Events Section -->
+  <section class="events-section">
+    <h2>Upcoming Events</h2>
+    <div class="events-table-container">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Registration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for event in events %}
+          <tr>
+            <td>{{ event.name }}</td>
+            <td>
+                <details >
+                {{ event.description }}</details></td>
+            <td>{{ event.date|date:"d M Y" }}</td>
+            <td>{{ event.location }}</td>
+            <td>
+              {% if event.registration_link %}
+              <a href="{{ event.registration_link }}" target="_blank">Link</a>
+              {% else %}
+              N/A
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+    <div class="buttons">
+        <a href="{% url 'event_management' %}" class="btn green-btn">Common Action</a>
+
+      </div>
+  </section>
+
+
+  <!-- Assignments Section -->
+  <section class="assignments-section">
+    <h2>Assignments</h2>
+    <div class="events-table-container">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Assignment Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Total mark</th>
+            <th>department</th>
+
+             <th> Assinged by</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+      {% for assignment in assignments %}
+
+          <tr>
+            <td>{{ assignment.title  }}</td>
+            <td>
+                <details >
+                {{  assignment.description }}</details></td>
+            <td>{{ assignment.submission_date|date:"d M Y" }}</td>
+            <td>{{ assignment.total_marks  }}</td>
+            <td>{{ assignment.department }}</td>
+            <td>
+              {{assignment.teacher}}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+    <div class="buttons">
+        <a href="{% url 'event_management' %}" class="btn green-btn">Common Action</a>
+        {% if user.role == "teacher" %}
+        <a class="btn green-btn">Teacher Action</a>
+        {% endif %}
+      </div>
+  </section>
+</div>
+{% endblock %}

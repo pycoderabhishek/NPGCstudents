@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{%block link%}
+{%load static%}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WhatsApp Groups</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <link rel="stylesheet" href="{% static 'css/whatsapp_groups_list.css' %}">
+    
+  <link rel="stylesheet" href="{% static 'css/whatsapp.css' %}">
+{%endblock link%}
+{% block content %}
+  <div class="group_section">
+    {% for group in groups  %}
+    <div class="group_card">
+      <div class="group_details">
+        <h2 style="display:inline;">{{group.group_name}} <h5 style="display:inline;">{{group.course_id}}</h5></h2>
+        <p><i>{{group.group_description}}</i></p>
+        <div class="groupbutton">
+          <button class="primary">
+            join
+          </button>
+          <button class="primary">
+            INFO
+          </button>
+          <button class="primary">
+            EDIT
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+{%endblock content%}

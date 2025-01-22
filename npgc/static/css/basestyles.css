@@ -70,17 +70,20 @@ body {
 
 .top-header {
     text-align: center;
+    width:100vw;
     background-color: #4ade80;
-  
-    
-}
 
+
+}
+.topimg{
+    width: 90%;
+}
 /* Profile Section */
 .profile-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     margin: 0 auto;
 }
 
@@ -89,7 +92,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    
+
     width: 100%;
 }
 
@@ -260,7 +263,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
-    
+
     background-color: #f9f9f9;
 }
 

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% block title %}admin-dashboard{% endblock title %}
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href='{% static "css/admin.css" %}'>
+{% endblock link %}
+{% block content %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Admin Dashboard</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ logout_url }}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container_box mt-5">
+    <div class="row">
+        <div class="col-lg-12 ">
+            <h2>Welcome, Administrator! {{user.username}}</h2>
+            <p class="text-muted">Here is an overview of the current system data:</p>
+        </div>
+    </div>
+    
+    <div class="container admin_menu row">
+        <!-- Cards for Counts -->
+        <div class="col-md-4 ">
+            <a class="formclicker" href="" ></a>
+            <div class="card text-white bg-primary">
+                <div class="card-body">
+                    <h5 class="card-title">Total Students</h5>
+                    <p class="card-text display-6">{{ student_count }}</p>
+                </div>
+            </div>
+        </af>
+        </div>
+        <div class="col-md-4 ">
+            <div class="card text-white bg-success">
+                <div class="card-body">
+                    <h5 class="card-title">Total Teachers</h5>
+                    <p class="card-text display-6">{{ teacher_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 ">
+            <div class="card text-white bg-info">
+                <div class="card-body">
+                    <h5 class="card-title">Total Events</h5>
+                    <p class="card-text display-6">{{ event_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="card text-white bg-warning">
+                <div class="card-body">
+                    <h5 class="card-title">Total Assignments</h5>
+                    <p class="card-text display-6">{{ assignment_count }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 ">
+            <div class="card text-white bg-danger">
+                <div class="card-body">
+                    <h5 class="card-title">Total Notifications</h5>
+                    <p class="card-text display-6">{{ notification_count }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Links to Manage Sections -->
+        <div class="col-md-12">
+            <div class="list-group">
+               <a href=" {% url 'manage_students' %}" class="list-group-item list-group-item-action">Manage Students</a>
+                <a href="{{ manage_teachers_url }}" class="list-group-item list-group-item-action">Manage Teachers</a>
+                <a href="{{ manage_events_url }}" class="list-group-item list-group-item-action">Manage Events</a>
+                <a href="{{ manage_assignments_url }}" class="list-group-item list-group-item-action">Manage Assignments</a>
+                <a href="{{ manage_notifications_url }}" class="list-group-item list-group-item-action">Manage Notifications</a> 
+                
+                </div>
+    
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+<footer class="text-center mt-5 py-3">
+    <p class="text-muted">&copy; 2025 NPGC. All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
+
+
+<!--  -->
+{% endblock content %}

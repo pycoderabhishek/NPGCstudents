@@ -25,9 +25,8 @@ SECRET_KEY = 'django-insecure-l@!9gx!1c04u6&h)i9qp^9q4e4$_q-s)n53w!k(1cuxr-o&d*7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-# <<<<<<< HEAD
 ALLOWED_HOSTS = ["npgcstudents.pythonanywhere.com"]
-# =======
+
 
 # Application definition
 
@@ -41,6 +40,7 @@ INSTALLED_APPS = [
     'user.apps.UserConfig',
     'department.apps.DepartmentConfig',
     'taksdata.apps.TaksdataConfig',
+    'whatsapp.apps.WhatsappConfig',
 
 ]
 
@@ -75,10 +75,9 @@ TEMPLATES = [
 WSGI_APPLICATION = 'npgc.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 DATABASES = {
     'default': {
+
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'npgcstudents$default',
         'USER': 'npgcstudents',
@@ -87,6 +86,7 @@ DATABASES = {
 
  }
 }
+AUTH_USER_MODEL = 'user.User'
 LOGIN_URL = '/login/'  # Redirect to login page if user is not authenticated
 LOGIN_REDIRECT_URL = '/teacher/dashboard/'  # Default redirect after login (can be overridden)
 LOGOUT_REDIRECT_URL = '/login/'  # Redirect after logout
@@ -131,8 +131,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 STATIC_URL = '/static/'  # URL to access static files in development
-STATICFILES_DIRS = [BASE_DIR / "static_root"]  # Directory for project-specific static files
-STATIC_ROOT = BASE_DIR / "staticfiles_root"   # Directory to collect static files for production
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Directory for project-specific static files
+STATIC_ROOT = BASE_DIR / "staticfiles"   # Directory to collect static files for production
 
 MEDIA_URL = '/media/'  # URL to access media files in development
 MEDIA_ROOT = BASE_DIR / "media"  # Directory to store uploaded media files
