@@ -4,21 +4,6 @@ import os
 from django.utils.text import slugify
 
 from department.models import Course,Department
-
-def rename_image(instance, filename, folder):
-    """
-    Custom function to rename uploaded image.
-    - instance: The instance of the model (Group).
-    - filename: Original name of the uploaded file.
-    - folder: Folder to store the image (e.g., 'wapp_qr', 'wapp_logo').
-    """
-    # Get group name or ID
-    group_identifier = slugify(instance.group_name) if instance.group_name else f"group_{instance.group_id}"
-    # Enforce .png extension
-    new_filename = f"{group_identifier}_{folder}.png"
-    # Return the new file path
-    return f"WHATSAPP/{folder}/{new_filename}"
-
 class Group(models.Model):
     GROUP_TYPES = [
         ('official', 'Official'),
@@ -38,9 +23,6 @@ class Group(models.Model):
     group_type = models.CharField(max_length=20, choices=GROUP_TYPES, default='official')
     wapp_qr = models.ImageField(upload_to='WHATAPP/wapp_qr', blank=True, null=True)
     wapp_logo = models.ImageField(upload_to='WHATAPP/wapp_logo', blank=True, null=True)
-   # Custom upload_to function for QR and logo images
-    wapp_qr = models.ImageField(upload_to=lambda instance, filename: rename_image(instance, filename, 'wapp_qr'), blank=True, null=True)
-    wapp_logo = models.ImageField(upload_to=lambda instance, filename: rename_image(instance, filename, 'wapp_logo'), blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Rename wapp_qr file
@@ -53,4 +35,13 @@ class Group(models.Model):
 
         super(Group, self).save(*args, **kwargs)
 
+    def rename_file(self, original_name, folder):
+        # Extract file extension
+        ext = os.path.splitext(original_name)[1]
+        # Create new file name based on group_name
+        new_name = f"{slugify(self.group_id)}{ext}"
+        # Return the new name with the folder path
+        return f"{new_name}"
 
+    def __str__(self):
+        return self.group_name

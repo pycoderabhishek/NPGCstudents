@@ -2,7 +2,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .models import Event
+from .models import Event,Assignment
 from .forms import EventForm
 from department.models import Department, Course
 
@@ -49,7 +49,7 @@ def event_management(request):
     if user.role == 'student':
         events = filter_events(request)
     else:
-        events = filter_events(request).filter(organizer=user.teacher)
+        events = filter_events(request)
 
     context = {
         'form': form,
@@ -61,26 +61,6 @@ def event_management(request):
     return render(request, 'event/event_management.html', context)
 
 @login_required
-def edit_event(request, event_id):
-    """View for editing an event."""
-    event = get_object_or_404(Event, id=event_id)
-    if request.user.role not in ['administrator', 'teacher'] or request.user.teacher != event.organizer:
-        messages.error(request, 'You do not have permission to edit this event.')
-        return redirect('event_management')
-
-    if request.method == 'POST':
-        form = EventForm(request.POST, instance=event)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Event updated successfully!')
-            return redirect('event_management')
-    else:
-        form = EventForm(instance=event)
-
-    context = {'form': form, 'event': event}
-    return render(request, 'event_edit.html', context)
-
-@login_required
 def delete_event(request, event_id):
     """View for deleting an event."""
     event = get_object_or_404(Event, id=event_id)
@@ -90,3 +70,58 @@ def delete_event(request, event_id):
         event.delete()
         messages.success(request, 'Event deleted successfully!')
     return redirect('event_management')
+
+
+# ------------------------------------------------------------------------------------------------------------------------------
+
+def filter_assignments(request):
+    """Utility function to filter assignments based on request parameters."""
+    assignments = Assignment.objects.all()
+    department = request.GET.get('department')
+    course = request.GET.get('course')
+    start_date = request.GET.get('start_date')
+    end_date = request.GET.get('end_date')
+
+    if department:
+        assignments = assignments.filter(department_id=department)
+    if course:
+        assignments = assignments.filter(course_id=course)
+    if start_date:
+        assignments = assignments.filter(due_date__gte=start_date)
+    if end_date:
+        assignments = assignments.filter(due_date__lte=end_date)
+
+    return assignments
+
+@login_required
+def assignment_management(request):
+    """View for managing and displaying assignments."""
+    user = request.user
+    is_admin_or_teacher = user.role in ['administrator', 'teacher']
+
+
+    departments = Department.objects.all()
+    courses = Course.objects.all()
+    if user.role == 'student':
+        assignments = filter_assignments(request)
+    else:
+        assignments = filter_assignments(request)
+
+    context = {
+        'departments': departments,
+        'courses': courses,
+        'assignments': assignments,
+        'is_admin_or_teacher': is_admin_or_teacher,
+    }
+    return render(request, 'assignments/assignment_management.html', context)
+
+@login_required
+def delete_assignment(request, assignment_id):
+    """View for deleting an assignment."""
+    assignment = get_object_or_404(Assignment, id=assignment_id)
+    if request.user.role not in ['administrator', 'teacher'] or request.user.teacher != assignment.teacher:
+        messages.error(request, 'You do not have permission to delete this assignment.')
+    else:
+        assignment.delete()
+        messages.success(request, 'Assignment deleted successfully!')
+    return redirect('assignment_management')

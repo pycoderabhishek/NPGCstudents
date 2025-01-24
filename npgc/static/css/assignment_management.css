@@ -1,0 +1,183 @@
+
+
+/* Container */
+.assignment-manager-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+
+/* Messages */
+.messages {
+  margin-bottom: 20px;
+}
+.message {
+  padding: 10px 15px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  transition: opacity 0.3s ease-in-out;
+}
+.message.success {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+.message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* Buttons */
+.btn {
+  display: block;
+  padding: 10px 20px ;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+
+}
+.btn:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+.btn-danger {
+  background-color: #F44336;
+}
+.btn-danger:hover {
+  background-color: #E53935;
+}
+.btn-filter {
+  margin-top: 10px;
+}
+
+/* Forms */
+form {
+  margin-bottom: 20px;
+}
+form p {
+  margin-bottom: 15px;
+}
+form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+form input, form select, form textarea, form button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #AEAEAE;
+  border-radius: 4px;
+  transition: border-color 0.3s ease;
+}
+form input:focus, form select:focus, form textarea:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Enhanced Table */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  overflow: hidden;
+}
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+thead th {
+  padding: 5px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid black;
+}
+tbody tr {
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+tbody tr:nth-child(even) {
+  background-color: #1DCE1D11;
+}
+tbody tr:hover {
+  background-color: #e0f7fa;
+}
+tbody td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+}
+table .btn-small {
+  padding: 5px;
+  font-size: 14px;
+  margin: 0 0 5px 5px;
+}
+
+.btn-edit{
+
+  display: flex;
+  padding: 0;
+  justify-content: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .assignment-manager-container {
+    padding: 15px;
+  }
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+  thead tr {
+    display: none;
+  }
+  tbody tr {
+    margin-bottom: 15px;
+    background-color: white;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  tbody td {
+    text-align: center;
+    padding-left: 0%;
+    position: relative;
+  }
+  tbody td:before {
+    content: attr(data-label);
+    position: absolute;
+    left: 0;
+    width: 50%;
+    padding-left: 15px;
+    font-weight: bold;
+    text-align: left;
+  }
+  tbody td:last-child {
+    text-align: center;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0.45;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

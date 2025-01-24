@@ -68,7 +68,7 @@
             <td>{{ event.location }}</td>
             <td>
               {% if event.registration_link %}
-              <a href="{{ event.registration_link }}" target="_blank">Link</a>
+              <a href="https://images.app.goo.gl/NZXfdGWumtFFzxfN8" target="_blank">Link</a>
               {% else %}
               N/A
               {% endif %}
@@ -80,7 +80,7 @@
 
     </div>
     <div class="buttons">
-        <a href="{% url 'event_management' %}" class="btn green-btn">Common Action</a>
+        <a  href="{% url 'event_management' %}" class="green-btn">View all</a>
 
       </div>
   </section>
@@ -125,7 +125,7 @@
 
     </div>
     <div class="buttons">
-        <a href="{% url 'event_management' %}" class="btn green-btn">Common Action</a>
+        <a href="{% url 'assignment_management' %}" class=" green-btn">View all</a>
         {% if user.role == "teacher" %}
         <a class="btn green-btn">Teacher Action</a>
         {% endif %}

@@ -50,7 +50,7 @@ class Assignment(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     total_marks = models.IntegerField()
-    submission_format = models.CharField(max_length=200)
+    semester = models.IntegerField(blank=True ,null=True)
     late_submission_policy = models.TextField()
 
     def __str__(self):

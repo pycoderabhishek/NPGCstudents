@@ -38,8 +38,8 @@ a:hover {
 /* Buttons */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #207400;
+  padding: 5px 10px;
+  background-color: #076924;
   color: white;
   border: none;
   border-radius: 5px;
@@ -57,7 +57,7 @@ a:hover {
 /* Dashboard Container */
 .dashboard-container {
   padding: 20px;
-  max-width: 1200px;
+  width:95vw;
   margin: 0 auto;
 }
 
@@ -73,14 +73,13 @@ a:hover {
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 .profile-header {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 20px;
+  gap: 100px;
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
@@ -107,6 +106,77 @@ a:hover {
   animation: typing 2s steps(20, end);
   padding-top:0;
 }
+.filters-section {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 20px auto; /* Center alignment */
+  font-family: 'Arial', sans-serif;
+}
+
+.filters-section h2 {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.filters-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px; /* Space between form elements */
+}
+
+.filters-form label {
+  font-size: 14px;
+  color: #555;
+}
+
+.filters-form select,
+.filters-form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.filters-form select:focus,
+.filters-form input[type="date"]:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.filters-form .btn.btn-filter {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #007bff; /* Bootstrap blue */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.filters-form .btn.btn-filter:hover {
+  background-color: #0056b3;
+}
+
+@media (min-width: 768px) {
+  .filters-form {
+    grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+  }
+
+  .filters-form button {
+    grid-column: span 2; /* Button spans both columns */
+    justify-self: center;
+  }
+}
+
 
 @keyframes typing {
   from {
@@ -162,7 +232,7 @@ a:hover {
 .events-table td {
   padding: 10px;
   text-align: left;
-  border: 1px solid #000000;
+  border: 2px solid #076924;
 }
 
 .events-table th {
@@ -182,7 +252,7 @@ a:hover {
 .events-section h2,
 .assignments-section h2 {
   margin-bottom: 15px;
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   display: flex;
   justify-content: center;
 }
@@ -202,21 +272,10 @@ a:hover {
   margin-top: 20px;
   display: flex;
   justify-content: flex-end;
-  animation: float 5s ease-in-out infinite;
+
 }
 
 
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-5px);
-  }
-}
 
 .buttons .btn {
   margin-right: 10px;
@@ -317,7 +376,7 @@ a:hover {
 @media (min-width: 992px) {
   .dashboard-container {
     padding: 30px;
-    max-width: 1200px;
+
   }
 
   .profile-info h1 {
@@ -341,6 +400,9 @@ a:hover {
 @media (min-width: 1200px) {
   .profile-info h1 {
     font-size: 26px;
+  }
+  .top-header{
+      width:100vw;
   }
 
   .profile-info h5 {
