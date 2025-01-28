@@ -3,40 +3,309 @@
 {%block link%}
 {%load static%}
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>WhatsApp Groups</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WhatsApp Groups</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="{% static 'css/whatsapp_groups_list.css' %}">
+<link rel="stylesheet" href="{% static 'css/whatsapp_groups_list.css' %}">
 
-  <link rel="stylesheet" href="{% static 'css/whatsapp.css' %}">
+<link rel="stylesheet" href="{% static 'css/whatsapp.css' %}">
+<style>
+    .hidden {
+        display: none;
+    }
+
+/*removed from inline and added to style tag
+    .group_card{
+    width: 65%;
+    } */
+
+    .group {
+        display: flex;
+    height: 40vh;
+    margin: auto;
+    margin:20px 10px;
+    width: 80%;
+    justify-content: center;
+    align-items: center;
+    gap:40px;
+    }
+
+    .qr{
+       width: 30%;
+    align-items: center;
+    height: 100%;
+    display: flex;
+    object-fit:contain;
+    padding:20px;
+    margin: auto;
+    }
+    .qr img {
+        margin: auto;
+        height:100%;
+        width: 100%;
+    }
+
+
+.container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styles */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+/* Group list styling */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    background-color: #f9f9f9;
+    padding: 12px;
+    margin: 8px 0;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+ul li:hover {
+    background-color: #e9ecef;
+}
+
+/* Form styling */
+form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.btn {
+      background-color: #076924;
+    color: white;
+    border: none;
+    padding: 4px 49px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2d8d75;
+}
+
+.btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* Add a small margin between the form and the group list */
+hr {
+    margin: 20px 0;
+}
+
+@media (max-width:980px)and (min-width:768px) {
+    .group {
+        height: 20vh;
+        gap :40px;
+    }
+
+    .qr{
+    height:60%;
+    }
+
+    .qr img {
+    height : 100%;
+    }
+}
+
+@media (orientation :landscape) {
+
+    .group{
+    height: 80vh;
+    }
+
+    .qr{
+    height:80%;
+    }
+}
+
+@media (max-width:480px){
+    .group{
+    height:auto;
+    width: 90%;
+    display:block;
+    }
+
+    .group_card{
+     width:100%;
+    }
+    .qr{
+    height: 50%;
+    width : 100%;
+    margin-top: 30px ;
+    }
+}
+
+
+</style>
 {%endblock link%}
 {% block content %}
-  <div class="group_section">
-    {% for group in groups  %}
-    <div class="group_card">
-      <div class="group_details">
-       <div class="group_header">
-         <img src="media/{{ group.wapp_logo}}.{{group.group.id}}" alt="WhatsApp Logo for {{ group.group_name }}">
-<h2 style="display:inline;">{{group.group_name}} </h2>
-        <h5 style="display:inline;">{{group.course_id}}</h5>
+
+
+
+
+
+<div style="margin-top:50px;" class="group_section">
+    {% for group in groups %}
+    <div class="group">
+        <div style="width:65%; margin: auto;" class="group_card">
+            <div class="group_details">
+                <div class="group_header">
+
+                    <h2 style="display:inline;">{{group.group_name}} </h2>
+                    <h3 style="display:inline;">(SEM: {{group.semester}})</h3>
+                    <h5 style="display:inline;">{{group.course_id}}</h5>
+                </div>
+                <p><i>{{group.group_description}}</i></p>
+                <div class="groupbutton">
+                    <button class="btn btn-info btn-sm join-btn" data-group-id="{{ group.group_id }}">Join</button>
+
+
+                    {% if is_admin_or_teacher %}
+
+                    <button class="primary">
+
+                        EDIT
+                    </button>
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+
         </div>
-        <p><i>{{group.group_description}}</i></p>
-        <div class="groupbutton">
-          <button class="primary">
-            join
-          </button>
-          <button class="primary">
-            INFO
-          </button>
-          <button class="primary">
-            EDIT
-          </button>
+<div id="qr-section-{{ group.group_id }}" class="hidden group_card">
+
+
+            {% if group.wapp_qr %}
+            <img src="{{ group.wapp_qr.url }}" alt="WhatsApp QR" class="qr-image">
+            {% else %}
+            <p>No QR available for this group.</p>
+            {% endif %}
         </div>
-      </div>
     </div>
     {% endfor %}
-  </div>
+</div>
+
+
+{% if is_admin_or_teacher %}
+
+
+<div class="addgroup">
+    <!-- Form for creating a new group -->
+    <h3>Create New Group</h3>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="group_name">Group Name:</label>
+            {{ form.group_name }}
+        </div>
+        <div class="form-group">
+            <label for="semester">Semester:</label>
+            {{ form.semester }}
+        </div>
+        <div class="form-group">
+            <label for="course_id">Course:</label>
+            {{ form.course_id }}
+        </div>
+        <div class="form-group">
+            <label for="department_id">Department:</label>
+            {{ form.department_id }}
+        </div>
+        <div class="form-group">
+            <label for="group_link">Group Link:</label>
+            {{ form.group_link }}
+        </div>
+        <div class="form-group">
+            <label for="group_description">Group Description:</label>
+            {{ form.group_description }}
+        </div>
+        <div class="form-group">
+            <label for="group_type">Group Type:</label>
+            {{ form.group_type }}
+        </div>
+        <div class="form-group">
+            <label for="wapp_qr">WhatsApp QR:</label>
+            {{ form.wapp_qr }}
+        </div>
+        <div class="form-group">
+            <label for="wapp_logo">WhatsApp Logo:</label>
+            {{ form.wapp_logo }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Create Group</button>
+    </form>
+</div>
+{%endif%}
+<script>
+   document.querySelectorAll('.join-btn').forEach(function(button) {
+    button.addEventListener('click', function() {
+        var groupId = this.getAttribute('data-group-id');
+        var qrSection = document.getElementById('qr-section-' + groupId); // Target specific group's QR section
+ // Using the common class for QR section
+
+        // Toggle visibility of the QR section for the corresponding group
+        if (qrSection.classList.contains('hidden')) {
+            qrSection.classList.remove('hidden');
+            qrSection.classList.add('qr')// Show the QR section
+        } else {
+            qrSection.classList.add('hidden');
+             qrSection.classList.remove('qr')// Hide the QR section
+        }
+    });
+});
+</script>
 {%endblock content%}

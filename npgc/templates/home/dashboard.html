@@ -6,6 +6,28 @@
 {% endblock link %}
 {% block content %}
 <div class="dashboard-container">
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active ">
+          <img src="/student-management/slide-2.jpg" class="d-block w-100 h-100" alt="...">
+          <p>Welcome to National P.G. College</p>
+          <p2>We Design the Future and Set Trends for others to follow.</p2>
+        </div>
+        <div class="carousel-item">
+          <img src="/student-management/slide-3.jpg" class="d-block w-100 h-100" alt="...">
+          <p>Grade 'A' College</p>
+          <p2>Grade 'A' Accredited by NAAC & Autonomous and College with Potential for Excellence(CPE) by UGC</p2>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   <!-- Profile Section -->
   <section class="profile-section">
     <div class="profile-card">
@@ -68,7 +90,7 @@
             <td>{{ event.location }}</td>
             <td>
               {% if event.registration_link %}
-              <a href="https://images.app.goo.gl/NZXfdGWumtFFzxfN8" target="_blank">Link</a>
+              <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMgOvkdsCaBeVybQdsTXEQkCHXT5wWNipC5w&usqp=CAU" target="_blank">Link</a>
               {% else %}
               N/A
               {% endif %}

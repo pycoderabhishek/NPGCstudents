@@ -1,16 +1,16 @@
 .group_card {
-    background-color: #ecf3e9;
-    border: 1px solid #099b04;
+    background-color: #ffffff;
+    border: 1px solid #173f35;
     border-radius: 3px;
    width:90vh;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     padding: 15px;
     text-align: center;
     margin: 40px auto;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .group_section{
-    width:100vw;
+
     display:block;
 
 }
@@ -20,12 +20,12 @@
 }
 
 .group_details h2 {
-    
+
     margin: 4px 0;
-   
+
 }
 h2{
-    
+
 }
 .group_details p {
     font-size: 14px;
@@ -74,7 +74,7 @@ button.primary:focus {
     .group_card {
         width: 100%; /* One card per row on smaller devices */
     }
-    
+
     .container {
         flex-direction: column; /* Stack buttons vertically */
         gap: 5px;

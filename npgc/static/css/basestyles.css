@@ -13,12 +13,13 @@ body {
 .container {
     display: flex;
     flex-direction: row;
+    width:100%;
 }
 
 .sidebar {
     width: 7%;
     height: 100vh;
-    background-color: #076924;
+    background-color: #173F35;
     color: white;
     display: flex;
     flex-direction: column;
@@ -70,8 +71,8 @@ body {
 
 .top-header {
     text-align: center;
-    width:100vw;
-    background-color: #4ade80;
+
+    background-color: #173f25;
 
 
 }

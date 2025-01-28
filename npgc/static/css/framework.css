@@ -5,7 +5,7 @@ body {
   padding: 0;
   background-color: #f8f8f8;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.5;
   display: flex;
 }
 
@@ -61,7 +61,7 @@ a:hover {
 .assignments-section {
   background-color: white;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 20px;
 }
 
@@ -205,7 +205,7 @@ a:hover {
 /* Media Queries */
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 576px) {
+@media (max-width: 480px) {
   body {
     flex-direction: column;
   }
@@ -215,12 +215,38 @@ a:hover {
     width: 100%;
   }
 
+
+  @keyframes typing {
+  from {
+    width: 0;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+
+  }
+
+  to{
+    width: 100%;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+  }
+}
+
+  .profile-info {
+    width: 100%;
+    text-align:center;
+  }
+
   .profile-info h1 {
     font-size: 1.5rem;
   }
 
   .profile-header {
+     width: 100%;
     gap: 10px;
+    display:flex
+    justify-content:center;
   }
 
   .profile-img-container{
@@ -242,7 +268,7 @@ a:hover {
   }
 }
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 767px) {
   .dashboard-container {
     padding: 20px;
     width: 100%;
@@ -268,7 +294,7 @@ a:hover {
   }
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .dashboard-container {
     padding: 25px;
     max-width: 960px;
@@ -292,7 +318,7 @@ a:hover {
   }
 }
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
+@media (min-width: 1025px)and (max-width:1200px)  {
   .dashboard-container {
     padding: 30px;
 
@@ -316,7 +342,7 @@ a:hover {
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   .profile-info h1 {
     font-size: 26px;
   }
