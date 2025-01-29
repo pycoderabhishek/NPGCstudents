@@ -72,6 +72,18 @@ def delete_event(request, event_id):
     return redirect('event_management')
 
 
+@login_required
+def delete_assignment(request, assignment_id):
+    """View for deleting an event."""
+    assignment = get_object_or_404(Assignment, id=assignment_id)
+    if request.user.role not in ['administrator', 'teacher'] or request.user.teacher != assignment.teacher:
+        messages.error(request, 'You do not have permission to delete this assignment.')
+    else:
+        assignment.delete()
+        messages.success(request, 'Assginment deleted successfully!')
+    return redirect('assignment_management')
+
+
 # ------------------------------------------------------------------------------------------------------------------------------
 
 def filter_assignments(request):

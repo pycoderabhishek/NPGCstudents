@@ -3,6 +3,9 @@
 {% block link %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/framework.css' %}">
+<style>
+
+</style>
 {% endblock link %}
 {% block content %}
 <div class="dashboard-container">
@@ -147,10 +150,8 @@
 
     </div>
     <div class="buttons">
-        <a href="{% url 'assignment_management' %}" class=" green-btn">View all</a>
-        {% if user.role == "teacher" %}
-        <a class="btn green-btn">Teacher Action</a>
-        {% endif %}
+        <a href="{% url 'assignment_management' %}" class="btn green-btn">View all</a>
+
       </div>
   </section>
 </div>

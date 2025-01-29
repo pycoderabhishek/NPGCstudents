@@ -5,7 +5,7 @@ body {
   padding: 0;
   background-color: #f8f8f8;
   color: #333;
-  line-height: 1.6;
+  line-height: 1.5;
   display: flex;
 }
 
@@ -36,17 +36,7 @@ a:hover {
 }
 
 /* Buttons */
-.btn {
-  display: inline-block;
-  padding: 5px 10px;
-  background-color: #076924;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+
 
 .btn:hover {
   transform: scale(1.1);
@@ -57,7 +47,7 @@ a:hover {
 /* Dashboard Container */
 .dashboard-container {
   padding: 20px;
-  width:95vw;
+  width:100%;
   margin: 0 auto;
 }
 
@@ -71,7 +61,7 @@ a:hover {
 .assignments-section {
   background-color: white;
   border: 1px solid #ddd;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 20px;
 }
 
@@ -106,77 +96,6 @@ a:hover {
   animation: typing 2s steps(20, end);
   padding-top:0;
 }
-.filters-section {
-  background-color: #f9f9f9; /* Light background for contrast */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  max-width: 600px;
-  margin: 20px auto; /* Center alignment */
-  font-family: 'Arial', sans-serif;
-}
-
-.filters-section h2 {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 20px;
-  color: #333;
-}
-
-.filters-form {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 15px; /* Space between form elements */
-}
-
-.filters-form label {
-  font-size: 14px;
-  color: #555;
-}
-
-.filters-form select,
-.filters-form input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-}
-
-.filters-form select:focus,
-.filters-form input[type="date"]:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-.filters-form .btn.btn-filter {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
-  background-color: #007bff; /* Bootstrap blue */
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-.filters-form .btn.btn-filter:hover {
-  background-color: #0056b3;
-}
-
-@media (min-width: 768px) {
-  .filters-form {
-    grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
-  }
-
-  .filters-form button {
-    grid-column: span 2; /* Button spans both columns */
-    justify-self: center;
-  }
-}
-
 
 @keyframes typing {
   from {
@@ -286,7 +205,7 @@ a:hover {
 /* Media Queries */
 
 /* Extra small devices (portrait phones, less than 576px) */
-@media (max-width: 576px) {
+@media (max-width: 480px) {
   body {
     flex-direction: column;
   }
@@ -296,12 +215,38 @@ a:hover {
     width: 100%;
   }
 
+
+  @keyframes typing {
+  from {
+    width: 0;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+
+  }
+
+  to{
+    width: 100%;
+    display: flex;
+    justify-self: center;
+    justify-content: center;
+  }
+}
+
+  .profile-info {
+    width: 100%;
+    text-align:center;
+  }
+
   .profile-info h1 {
     font-size: 1.5rem;
   }
 
   .profile-header {
+     width: 100%;
     gap: 10px;
+    display:flex
+    justify-content:center;
   }
 
   .profile-img-container{
@@ -323,7 +268,7 @@ a:hover {
   }
 }
 /* Small devices (landscape phones, 576px and up) */
-@media (min-width: 576px) and (max-width: 768px) {
+@media (min-width: 481px) and (max-width: 767px) {
   .dashboard-container {
     padding: 20px;
     width: 100%;
@@ -349,7 +294,7 @@ a:hover {
   }
 }
 /* Medium devices (tablets, 768px and up) */
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 768px) and (max-width: 1024px) {
   .dashboard-container {
     padding: 25px;
     max-width: 960px;
@@ -373,7 +318,7 @@ a:hover {
   }
 }
 /* Large devices (desktops, 992px and up) */
-@media (min-width: 992px) {
+@media (min-width: 1025px)and (max-width:1200px)  {
   .dashboard-container {
     padding: 30px;
 
@@ -397,12 +342,9 @@ a:hover {
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1200px) {
+@media (min-width: 1201px) {
   .profile-info h1 {
     font-size: 26px;
-  }
-  .top-header{
-      width:100vw;
   }
 
   .profile-info h5 {

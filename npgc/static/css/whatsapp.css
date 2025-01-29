@@ -33,7 +33,7 @@ h2{
     margin-bottom: 5px;
 }
 
-.container {
+.whatsapp-container {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -75,7 +75,7 @@ button.primary:focus {
         width: 100%; /* One card per row on smaller devices */
     }
 
-    .container {
+    .whatsapp-container {
         flex-direction: column; /* Stack buttons vertically */
         gap: 5px;
     }
