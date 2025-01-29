@@ -383,6 +383,31 @@
     color: white;
 }
 
+/* === Reset Styles === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #333; /* Neutral Dark Text */
+  /* background-color: #f8f9fa; */ /* Light Gray Background */
+  margin: 0;
+}
+/* Buttons */
+.btn {
+  display: inline-block;
+  /* padding: 0.5rem 1rem; */
+  /* font-size: 1rem; */
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 /* Layout */
 .container {
   width: 100%;
@@ -392,24 +417,3 @@
 }
 
 
-.footer {
-    background-color: #1a202c; /* Dark Gray (Tailwind gray-900) */
-    color: #ffffff; /* White text */
-    padding: 1.5rem 0;
-    text-align: center;
-}
-
-.footer a {
-    color: #cbd5e0; /* Tailwind gray-400 */
-    text-decoration: none;
-    margin: 0 10px;
-    transition: color 0.3s ease;
-}
-
-.footer a:hover {
-    color: #ffffff;
-}
-
-.footer-icons a {
-    font-size: 1.2rem;
-}
