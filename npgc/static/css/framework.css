@@ -1,18 +1,4 @@
 /* General Styles */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-color: #f8f8f8;
-  color: #333;
-  line-height: 1.5;
-  display: flex;
-}
-
-*{
-  font-family: 'Playfair Display', serif;
-}
-
 
 h1,
 h2 {
@@ -40,7 +26,7 @@ a:hover {
 
 .btn:hover {
   transform: scale(1.1);
-  background-color: #257C27;
+  background-color: #075e54;
   transition: 0.3s ease;
 }
 
@@ -56,7 +42,7 @@ a:hover {
   margin-bottom: 30px;
 }
 
-.profile-card,
+
 .events-section,
 .assignments-section {
   background-color: white;
@@ -70,6 +56,7 @@ a:hover {
   align-items: center;
   justify-content: flex-start;
   gap: 100px;
+  padding: 13px;
   flex-wrap: wrap;
   margin-bottom: 30px;
 }
@@ -197,7 +184,7 @@ a:hover {
 
 
 .buttons .btn {
-  margin-right: 10px;
+  margin-right: 2px;
   box-shadow: 0 4px 6px 2px rgba(0, 0, 0, 0.4);
 }
 
@@ -357,7 +344,7 @@ a:hover {
   }
 
   .btn {
-    padding: 14px 24px;
+    padding: 4px 24px;
     font-size: 20px;
   }
 }

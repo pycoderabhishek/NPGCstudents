@@ -51,23 +51,6 @@
   box-shadow: 0 0 5px rgba(0, 255, 85, 0.5);
 }
 
-.filters-form .btn.btn-filter {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
-  background-color:rgb(6, 105, 11); /* Bootstrap blue */
-  border: none;
-  border-radius: 5px;
-  margin-left:3px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-.filters-form .btn.btn-filter:hover {
-  background-color:rgb(36, 179, 0);
-}
-
 @media (min-width: 768px) {
   .filters-form {
     grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
@@ -102,7 +85,7 @@
     <form method="post" class="event-form">
       {% csrf_token %}
       {{ form.as_p }}
-      <button type="submit" class="btn btn-submit">Save Event</button>
+      <button  type="submit" class="btn btn-submit">Save Event</button>
     </form>
   </section>
   {% endif %}
@@ -133,7 +116,7 @@
       <label for="end_date">EndDate:</label>
       <input type="date" name="end_date" id="end_date" value="{{ request.GET.end_date }}">
 
-      <button type="submit" class="btn btn-filter">Apply</button>
+      <button type="submit" style="margin-left:4px;" class="btn btn-green btn-filter">Apply</button>
     </form>
   </section>
 

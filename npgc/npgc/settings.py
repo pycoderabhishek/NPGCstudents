@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-l@!9gx!1c04u6&h)i9qp^9q4e4$_q-s)n53w!k(1cuxr-o&d*7
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["npgcstudents.pythonanywhere.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -76,15 +76,19 @@ WSGI_APPLICATION = 'npgc.wsgi.application'
 
 
 DATABASES = {
-    'default': {
+#     'default': {
 
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'npgcstudents$default',
-        'USER': 'npgcstudents',
-        'PASSWORD': 'database',
-        'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'npgcstudents$default',
+#         'USER': 'npgcstudents',
+#         'PASSWORD': 'database',
+#         'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
 
- }
+#  }
+ 'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
 }
 AUTH_USER_MODEL = 'user.User'
 LOGIN_URL = '/login/'  # Redirect to login page if user is not authenticated
