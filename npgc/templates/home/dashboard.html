@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/framework.css' %}">
+<style>
+
+</style>
+{% endblock link %}
+{% block content %}
+<div class="dashboard-container">
+    <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active ">
+          <img src="/student-management/slide-2.jpg" class="d-block w-100 h-100" alt="...">
+          <p>Welcome to National P.G. College</p>
+          <p2>We Design the Future and Set Trends for others to follow.</p2>
+        </div>
+        <div class="carousel-item">
+          <img src="/student-management/slide-3.jpg" class="d-block w-100 h-100" alt="...">
+          <p>Grade 'A' College</p>
+          <p2>Grade 'A' Accredited by NAAC & Autonomous and College with Potential for Excellence(CPE) by UGC</p2>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  <!-- Profile Section -->
+  <section class="profile-section">
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="profile-img-container">
+            <img src="" alt="" class="profile-image">
+        </div>
+       <div class="profile-info">
+          <h1>{{ profile.user.username }}</h1>
+          <h5>{{profile.department}}</h5>
+          {% if user.role == "teacher" %}
+          <p>{{ profile.department_post }}</p>
+
+          {% else %}
+          <p><i>{{profile.course}}</i></p>
+          <p>Semester: {{ profile.semester }}, Year: {{ profile.year }}</p>
+          {% endif %}
+        </div>
+      </div>
+      <div class="profile-details">
+        {% if user.role == "teacher" %}
+        <p><strong>Qualifications:</strong> {{ profile.qualification }}</p>
+        <p><strong>Specialization:</strong> {{ profile.specialization }}</p>
+        <p><strong>Date of Joining:</strong> {{ profile.date_of_joining|date:"d M Y" }}</p>
+        <p><strong>Experience:</strong> {{ profile.experience_years }} years</p>
+        <p><strong>Subjects Assigned:</strong> {{ profile.subjects_assigned }}</p>
+        {% else %}
+        <p><strong>Contact:</strong> {{ profile.contact }}</p>
+        <p><strong>Date of Birth:</strong> {{ profile.date_of_birth|date:"d M Y" }}</p>
+        <p><strong>Address:</strong> {{ profile.address }}</p>
+        <p><strong>Guardian:</strong> {{ profile.guardian_name }} ({{ profile.guardian_contact }})</p>
+        <p><strong>Scholarship Status:</strong> {{ profile.scholarship_status }}</p>
+        <p><strong>Attendance:</strong> {{ profile.attendance_percentage }}%</p>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+  <!-- Events Section -->
+  <section class="events-section">
+    <h2>Upcoming Events</h2>
+    <div class="events-table-container">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Event Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Registration</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for event in events %}
+          <tr>
+            <td>{{ event.name }}</td>
+            <td>
+                <details >
+                {{ event.description }}</details></td>
+            <td>{{ event.date|date:"d M Y" }}</td>
+            <td>{{ event.location }}</td>
+            <td>
+              {% if event.registration_link %}
+              <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMgOvkdsCaBeVybQdsTXEQkCHXT5wWNipC5w&usqp=CAU" target="_blank">Link</a>
+              {% else %}
+              N/A
+              {% endif %}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+    <div class="buttons">
+        <a  href="{% url 'event_management' %}" class="green-btn">View all</a>
+
+      </div>
+  </section>
+
+
+  <!-- Assignments Section -->
+  <section class="assignments-section">
+    <h2>Assignments</h2>
+    <div class="events-table-container">
+      <table class="events-table">
+        <thead>
+          <tr>
+            <th>Assignment Name</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Total mark</th>
+            <th>department</th>
+
+             <th> Assinged by</th>
+          </tr>
+        </thead>
+        <tbody>
+
+
+      {% for assignment in assignments %}
+
+          <tr>
+            <td>{{ assignment.title  }}</td>
+            <td>
+                <details >
+                {{  assignment.description }}</details></td>
+            <td>{{ assignment.submission_date|date:"d M Y" }}</td>
+            <td>{{ assignment.total_marks  }}</td>
+            <td>{{ assignment.department }}</td>
+            <td>
+              {{assignment.teacher}}
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+    <div class="buttons">
+        <a href="{% url 'assignment_management' %}" class="btn green-btn">View all</a>
+
+      </div>
+  </section>
+</div>
+{% endblock %}

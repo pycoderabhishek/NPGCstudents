@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href='{% static "css/admin.css" %}'>
+{% endblock link %}
+{%block content %}
+<div class="col-md-4 ">
+    <div class="card text-white bg-primary">
+        <div class="card-body">
+            <h5 class="card-title">Total Students</h5>
+            <p class="card-text display-6">{{ student_count }}</p>
+         
+        </div>
+    </div>
+    <div id="teacher_form_container" >
+        <h2>Students Form</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            {{students.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+{%endblock%}

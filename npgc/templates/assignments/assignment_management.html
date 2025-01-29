@@ -1,0 +1,257 @@
+{% extends "base.html" %}
+
+{% block link %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/framework.css' %}">
+<style>
+ .filters-section {
+  background-color: #f9f9f9; /* Light background for contrast */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+
+  font-family: 'Arial', sans-serif;
+}
+
+.filters-section h2 {
+  font-size: 24px;
+  text-align: center;
+
+  color: #333;
+}
+
+.filters-form {
+  display:flex;
+  gap:5;
+  max-height:6vh;
+}
+
+.filters-form label {
+  font-size: 1rem;
+  color: #516b54;
+  padding:4px;
+}
+
+.filters-form select,
+.filters-form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
+}
+
+.filters-form select:focus,
+.filters-form input[type="date"]:focus {
+  border-color:rgb(0, 255, 76);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 255, 85, 0.5);
+}
+
+.filters-form .btn.btn-filter {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #fff;
+  background-color:rgb(6, 105, 11); /* Bootstrap blue */
+  border: none;
+  border-radius: 5px;
+  margin-left:3px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.filters-form .btn.btn-filter:hover {
+  background-color:rgb(36, 179, 0);
+}
+
+@media (min-width: 768px) {
+  .filters-form {
+    grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+  }
+
+  .filters-form button {
+    grid-column: span 2; /* Button spans both columns */
+    justify-self: center;
+  }
+}
+
+
+/* Enhanced Table */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 20px;
+  overflow: hidden;
+}
+thead {
+  background-color: #4CAF50;
+  color: white;
+}
+thead th {
+  padding: 5px;
+  text-align: left;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: 1px solid black;
+}
+tbody tr {
+  background-color: white;
+  transition: background-color 0.3s ease-in-out;
+}
+tbody tr:nth-child(even) {
+  background-color: #1DCE1D11;
+}
+tbody tr:hover {
+  background-color: #e0f7fa;
+}
+tbody td {
+  padding: 8px;
+  text-align: left;
+  border: 1px solid black;
+}
+table .btn-small {
+  padding: 5px;
+  font-size: 14px;
+  margin: 0 0 5px 5px;
+}
+
+.btn-edit{
+
+  display: flex;
+  padding: 0;
+  justify-content: center;
+}
+</style>
+{% endblock link %}
+
+{% block content %}
+<div class="assignment-manager-container">
+  <h1>Assignment Manager</h1>
+
+  <!-- Display Messages -->
+  {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+    <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  <!-- Assignment Form (Admin/Teacher Only) -->
+  {% if is_admin_or_teacher %}
+  <section class="assignment-form-section">
+    <h2>Manage Assignments</h2>
+    <form method="post" class="assignment-form">
+      {% csrf_token %}
+      <p>Title: <input type="text" name="Title"></p>
+      <p>Description: <textarea id="message" placeholder="Details about assignment" rows="3" required name="Description"></textarea></p>
+      <p>Due Date: <input type="date" name="Submission_date" required></p>
+      <p>Department:
+        <select name="Department">
+          <option value="" disabled selected>All</option>
+          {% for department in departments %}
+          <option value="{{ department.id }}">{{ department.name }}</option>
+          {% endfor %}
+        </select>
+      </p>
+      <p>Course:
+        <select name="Course">
+          <option value="" disabled selected>All</option>
+          {% for course in courses %}
+          <option value="{{ course.id }}">{{ course.name }}</option>
+          {% endfor %}
+        </select>
+      </p>
+      <p>Semester:
+        <select name="Semester">
+          <option value="" disabled selected>All</option>
+          {% for semester in semesters %}
+          <option value="{{ semester }}">{{ semester }}</option>
+          {% endfor %}
+        </select>
+      </p>
+      <button type="submit" class="btn btn-submit">Save Assignment</button>
+    </form>
+  </section>
+  {% endif %}
+
+  <!-- Filters Section -->
+  <section class="filters-section">
+    <h2>Filter Assignments</h2>
+    <form method="get" class="filters-form">
+      <label for="department">Department:</label>
+      <select name="department" id="department">
+        <option value=""  selected>All</option>
+        {% for department in departments %}
+        <option value="{{ department.id }}" {% if request.GET.department == department.id|stringformat:"s" %}selected{% endif %}>{{ department.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="course">Course:</label>
+      <select name="course" id="course">
+        <option value=""  selected>All</option>
+        {% for course in courses %}
+        <option value="{{ course.id }}" {% if request.GET.course == course.id|stringformat:"s" %}selected{% endif %}>{{ course.name }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="semester">Semester:</label>
+      <select name="Semester" id="semester">
+        <option value=""  selected>All</option>
+        {% for semester in semesters %}
+        <option value="{{ semester }}" {% if request.GET.Semester == semester|stringformat:"s" %}selected{% endif %}>{{ semester }}</option>
+        {% endfor %}
+      </select>
+
+      <label for="Submission_date">DueDate:</label>
+      <input type="date" name="due_date" id="due_date" value="{{ request.GET.due_date }}">
+
+      <button type="submit" class="btn btn-filter">Apply</button>
+    </form>
+  </section>
+
+  <!-- Assignments Table -->
+  <section class="assignments-section">
+    <h2>All Assignments</h2>
+    <table class="assignments-table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Due Date</th>
+          <th>Assigned By</th>
+          <th>Department</th>
+          <th>Course</th>
+          <th>Semester</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for assignment in assignments %}
+        <tr>
+          <td>{{ assignment.title }}</td>
+          <td> <details> {{ assignment.description }}</details></td>
+          <td>{{ assignment.submission_date|date:"d M Y" }}</td>
+          <td>{{ assignment.teacher }}</td>
+          <td>{{ assignment.department.name }}</td>
+          <td>{{ assignment.course.name }}</td>
+          <td>{{ assignment.semester }}</td>
+          <td>
+            {% if is_admin_or_teacher %}
+            <form action="{% url 'delete_assignment' assignment.id %}" method="post" style="display: inline;">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-small btn-danger" onclick="return confirm('Are you sure you want to delete this assignment?');">Delete</button>
+            </form>
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+</div>
+{% endblock %}

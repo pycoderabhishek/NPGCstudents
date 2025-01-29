@@ -5,9 +5,9 @@ from django.conf.urls.static import static
 from django.shortcuts import redirect
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', lambda request: redirect('login')),  # Redirect the root URL to the login page
-    path('login/', include('user.urls')),  # Include URLs for user app
+    path('pycoder/npgc/admin/', admin.site.urls),
+    path('', include('user.urls')),  # Redirect the root URL to the login page
+    # path('npgc/', include('user.urls')),  # Include URLs for user app
 ]
 
 # Serve static and media files during development

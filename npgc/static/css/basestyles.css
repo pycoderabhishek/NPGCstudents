@@ -13,12 +13,13 @@ body {
 .container {
     display: flex;
     flex-direction: row;
+    width:100%;
 }
 
 .sidebar {
     width: 7%;
     height: 100vh;
-    background-color: #076924;
+    background-color: #173F35;
     color: white;
     display: flex;
     flex-direction: column;
@@ -70,17 +71,20 @@ body {
 
 .top-header {
     text-align: center;
-    background-color: #4ade80;
-  
-    
-}
 
+    background-color: #ffffff;
+
+
+}
+.topimg{
+    width: 90%;
+}
 /* Profile Section */
 .profile-section {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     margin: 0 auto;
 }
 
@@ -89,7 +93,7 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     overflow: hidden;
-    
+
     width: 100%;
 }
 
@@ -186,6 +190,39 @@ body {
     .basic_details h1 {
         font-size: 1.5em;
     }
+
+     .workspace-card {
+        flex-direction: column;
+    }
+
+    .workdetails {
+        flex: 1 1 100%;
+        max-width: 100%;
+    }
+
+    .workbut a {
+        text-align: center;
+    }
+
+     .dropable {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .numberofstudent {
+        margin-left: 0;
+        margin-top: 10px;
+        width: 100%;
+    }
+
+    .profile-card {
+        width: 90%;
+    }
+
+    .department-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
 }
 
 
@@ -260,7 +297,7 @@ body {
     border: 1px solid #ddd;
     border-radius: 5px;
     padding: 10px;
-    
+
     background-color: #f9f9f9;
 }
 
@@ -276,21 +313,6 @@ body {
     color: #555;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .workspace-card {
-        flex-direction: column;
-    }
-
-    .workdetails {
-        flex: 1 1 100%;
-        max-width: 100%;
-    }
-
-    .workbut a {
-        text-align: center;
-    }
-}
 
 .dropable {
     display: flex;
@@ -340,19 +362,7 @@ body {
     color: #333;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .dropable {
-        flex-direction: column;
-        align-items: flex-start;
-    }
 
-    .numberofstudent {
-        margin-left: 0;
-        margin-top: 10px;
-        width: 100%;
-    }
-}
 .department-buttons {
     display: flex;
     justify-content: center;
@@ -378,16 +388,6 @@ body {
     color: white;
 }
 
-@media screen and (max-width: 768px) {
-    .profile-card {
-        width: 90%;
-    }
-
-    .department-buttons {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
 /* === Reset Styles === */
 * {
   margin: 0;
@@ -522,7 +522,7 @@ body {
 
 /* Shadows */
 .shadow {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .shadow-lg {

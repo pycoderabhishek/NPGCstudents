@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+
+
+
+{% block link %}
+<style>
+    /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin-top: 30px;
+}
+
+/* Group Form */
+#groupForm {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h4 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.form-label {
+  font-size: 14px;
+  color: #555;
+}
+
+.form-control {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.form-select {
+  font-size: 14px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+textarea.form-control {
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #28a745;
+  border: none;
+  padding: 10px 20px;
+  color: white;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+/* Groups Table */
+table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+table th,
+table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+table th {
+  background-color: #f8f9fa;
+  font-size: 16px;
+  color: #333;
+}
+
+table td {
+  font-size: 14px;
+  color: #555;
+}
+
+table a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+table a:hover {
+  text-decoration: underline;
+}
+
+button.btn {
+  padding: 5px 10px;
+  font-size: 12px;
+  border-radius: 5px;
+}
+
+button.btn-primary {
+  background-color: #007bff;
+  border: none;
+  color: white;
+}
+
+button.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+button.btn-danger {
+  background-color: #dc3545;
+  border: none;
+  color: white;
+}
+
+button.btn-danger:hover {
+  background-color: #c82333;
+}
+
+.text-center {
+  text-align: center;
+  color: #777;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .form-label, .form-control, .form-select, button[type="submit"] {
+    font-size: 12px;
+  }
+
+  table th, table td {
+    font-size: 12px;
+    padding: 10px;
+  }
+
+  button.btn {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+}
+
+</style>
+{% endblock link %}
+{% block content %}
+
+<!-- Group Form -->
+<form id="groupForm" class="mb-4" method="POST" action="'save_group' ">
+  {% csrf_token %}
+  <h4>Create or Update a Group</h4>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="groupName" class="form-label">Group Name</label>
+      <input type="text" id="groupName" name="groupName" class="form-control" placeholder="Enter Group Name" required>
+    </div>
+    <div class="col-md-6">
+      <label for="semester" class="form-label">Semester</label>
+      <input type="text" id="semester" name="semester" class="form-control" placeholder="Enter Semester" required>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="courseId" class="form-label">Course</label>
+      <input type="text" id="courseId" name="courseId" class="form-control" placeholder="Enter Course" required>
+    </div>
+    <div class="col-md-6">
+      <label for="departmentId" class="form-label">Department</label>
+      <input type="text" id="departmentId" name="departmentId" class="form-control" placeholder="Enter Department" required>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="groupType" class="form-label">Group Type</label>
+      <select id="groupType" name="groupType" class="form-select" required>
+        <option value="" disabled selected>Select Group Type</option>
+        <option value="Major">Major</option>
+        <option value="Minor">Minor</option>
+        <option value="Vocational">Vocational</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-3">
+    <div class="col-md-6">
+      <label for="groupLink" class="form-label">Group Link</label>
+      <input type="url" id="groupLink" name="groupLink" class="form-control" placeholder="Enter WhatsApp Group Link" required>
+    </div>
+    <div class="col-md-6">
+      <label for="groupDescription" class="form-label">Group Description</label>
+      <textarea id="groupDescription" name="groupDescription" class="form-control" rows="3" placeholder="Enter Group Description"></textarea>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-success">Save Group</button>
+</form>
+
+<!-- Groups Table -->
+<h4>Existing Groups</h4>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Group Name</th>
+      <th>Semester</th>
+      <th>Course</th>
+      <th>Department</th>
+      <th>Group Link</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for group in groups %}
+    <tr>
+      <td>{{ group.group_name }}</td>
+      <td>{{ group.semester }}</td>
+      <td>{{ group.course_id }}</td>
+      <td>{{ group.department_id }}</td>
+      <td><a href="{{ group.group_link }}" target="_blank" rel="noopener noreferrer">Join</a></td>
+      <td>
+        <form method="POST" action=" 'edit_group'" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+        </form>
+        <form method="POST" action=" 'delete_group' " style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+        </form>
+      </td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6" class="text-center">No groups available.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
