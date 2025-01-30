@@ -60,6 +60,7 @@
 .main-content {
     margin-left: 7%;
     flex: 1;
+    max-width:93%;
 }
 
 .top-header {
@@ -400,13 +401,20 @@ body {
 /* Buttons */
 .btn {
   display: inline-block;
-  /* padding: 0.5rem 1rem; */
-  /* font-size: 1rem; */
-  font-weight: 500;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 700;
   text-align: center;
+  color: #e7f5db;
+  font-family: monospace;
   text-decoration: none;
+  background-color: #075e54;
+  /* align-self: baseline; */
+  border: #173f35 1px solid;
+  margin: auto;
   border-radius: 4px;
   transition: background-color 0.3s ease, color 0.3s ease;
+  align-items: center;
 }
 /* Layout */
 .container {

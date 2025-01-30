@@ -4,13 +4,20 @@ from .models import Event
 class EventForm(forms.ModelForm):
     class Meta:
         model = Event
-        fields = ['name', 'date', 'description', 'organizer', 'location', 'department', 'course', 'audience_type', 'event_type', 'registration_link', 'poster_url', 'feedback_form', 'live_stream_link']
+        fields = '__all__'
         widgets = {
-            'date': forms.DateInput(attrs={'type': 'date'}),
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'organizer': forms.Select(attrs={'class': 'form-control'}),
+            'location': forms.TextInput(attrs={'class': 'form-control'}),
+            'department': forms.Select(attrs={'class': 'form-control'}),
+            'type': forms.Select(attrs={'class': 'form-control'}),
+            'course': forms.Select(attrs={'class': 'form-control'}),
+            'audience_type': forms.Select(attrs={'class': 'form-control'}),
+            'event_type': forms.Select(attrs={'class': 'form-control'}),
+            'registration_link': forms.URLInput(attrs={'class': 'form-control'}),
+            'poster_url': forms.URLInput(attrs={'class': 'form-control'}),
+            'feedback_form': forms.URLInput(attrs={'class': 'form-control'}),
+            'live_stream_link': forms.URLInput(attrs={'class': 'form-control'}),
         }
-
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        # Only allow the organizer field to be pre-filled with the logged-in teacher
-        if self.instance and self.instance.pk:
-            self.fields['organizer'].initial = self.instance.organizer

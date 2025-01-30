@@ -1,0 +1,68 @@
+.filters-section {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex
+;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+    flex-direction: column;
+    gap: 14px;
+}
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea.form-control {
+    height: 100px;
+}
+.filters-section h2 {
+    font-size: 24px;
+    text-align: center;
+    background:transparent;
+    color: #333;
+}
+
+.filters-form {
+  display:flex;
+  padding: 0 5px;
+
+}
+
+.filters-form label {
+  font-size: 1rem;
+  color: #516b54;
+  padding:4px;
+}
+
+.filters-form select,
+.filters-form input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+
+  border-radius: 5px;
+}
+
+.filters-form select:focus,
+.filters-form input[type="date"]:focus {
+  border-color:rgb(0, 255, 76);
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 255, 85, 0.5);
+}
+
+@media (min-width: 768px) {
+  .filters-form {
+    grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
+  }
+
+  .filters-form button {
+    grid-column: span 2; /* Button spans both columns */
+    justify-self: center;
+  }
+}

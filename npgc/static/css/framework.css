@@ -2,14 +2,15 @@
 
 h1,
 h2 {
-  color: #173f35; /*color changed*/
+  background-color: #075e54;
+  color: #e7f5db; /*color changed*/
 }
 
 
 h2:hover {
-  transform: scale(1.01);
-  color: #257C27;
-  transition: 0.3s ease;
+  /* transform: scale(1.01); */
+  /* color: #257C27; */
+  /* transition: 0.3s ease; */
 }
 
 a {
@@ -121,11 +122,11 @@ a:hover {
 }
 
 
-.events-table-container {
+.table-container {
   overflow-x: auto;
 }
 
-.events-table {
+.table {
   width: 100%;
   border-collapse: collapse;
   background-color: white;
@@ -134,24 +135,24 @@ a:hover {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.events-table th,
-.events-table td {
+.table th,
+.table td {
   padding: 10px;
   text-align: left;
   border: 2px solid #173f39;
 }
 
-.events-table th {
+.table th {
   background-color: #173f35; /*table header bg changed*/
   color: white;
   font-weight: bold;
 }
 
-.events-table td {
+.table td {
   background-color: white;
 }
 
-.events-table tr:hover {
+.table tr:hover {
   background-color: #f1f1f1;
 }
 
@@ -248,8 +249,8 @@ a:hover {
     align-self: center;
   }
 
-  .events-table th,
-  .events-table td {
+  .table th,
+  .table td {
     font-size: 10px;
     padding: 5px;
   }
@@ -270,8 +271,8 @@ a:hover {
     justify-content: space-around;
   }
 
-  .events-table th,
-  .events-table td {
+  .table th,
+  .table td {
     font-size: 12px;
   }
 
@@ -295,8 +296,8 @@ a:hover {
     font-size: 2.5rem;
   }
 
-  .events-table th,
-  .events-table td {
+  .table th,
+  .table td {
     font-size: 14px;
   }
 
@@ -319,8 +320,8 @@ a:hover {
     font-size: 1rem;
   }
 
-  .events-table th,
-  .events-table td {
+  .table th,
+  .table td {
     font-size: 16px;
   }
 
@@ -329,7 +330,7 @@ a:hover {
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
-@media (min-width: 1201px) {
+@media  {
   .profile-info h1 {
     font-size: 26px;
   }
@@ -338,14 +339,40 @@ a:hover {
     font-size: 22px;
   }
 
-  .events-table th,
-  .events-table td {
+  .table th,
+  .table td {
     font-size: 18px;
   }
 
-  .btn {
-    padding: 4px 24px;
-    font-size: 20px;
-  }
+ 
 }
+
+.event-manager-container h1 {
+  font-size: xxx-large;
+  padding: 10px 4%;
+}
+.messages {
+    color: red;
+    background: #c9f1a9;
+    text-align: center;
+    font-family: cursive;
+}
+.event-form-section {
+  margin: 30px auto;
+  max-width: 72%;
+  /* padding: 30px; */
+  border: 2px solid #02393e;
+}
+.event-form-section h2 {
+  text-align: center;
+}
+form.event-form {
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  /* justify-content: center; */
+}
+
 

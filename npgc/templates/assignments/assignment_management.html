@@ -3,129 +3,9 @@
 {% block link %}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/framework.css' %}">
-<style>
- .filters-section {
-  background-color: #f9f9f9; /* Light background for contrast */
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+<link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
+<link rel="stylesheet" href="{% static 'css/form.css' %}">
 
-
-  font-family: 'Arial', sans-serif;
-}
-
-.filters-section h2 {
-  font-size: 24px;
-  text-align: center;
-
-  color: #333;
-}
-
-.filters-form {
-  display:flex;
-  gap:5;
-  max-height:6vh;
-}
-
-.filters-form label {
-  font-size: 1rem;
-  color: #516b54;
-  padding:4px;
-}
-
-.filters-form select,
-.filters-form input[type="date"] {
-  width: 100%;
-  padding: 10px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-
-  border-radius: 5px;
-}
-
-.filters-form select:focus,
-.filters-form input[type="date"]:focus {
-  border-color:rgb(0, 255, 76);
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 255, 85, 0.5);
-}
-
-.filters-form .btn.btn-filter {
-  padding: 10px 15px;
-  font-size: 16px;
-  color: #fff;
-  background-color:rgb(6, 105, 11); /* Bootstrap blue */
-  border: none;
-  border-radius: 5px;
-  margin-left:3px;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-.filters-form .btn.btn-filter:hover {
-  background-color:rgb(36, 179, 0);
-}
-
-@media (min-width: 768px) {
-  .filters-form {
-    grid-template-columns: 1fr 1fr; /* Two-column layout for larger screens */
-  }
-
-  .filters-form button {
-    grid-column: span 2; /* Button spans both columns */
-    justify-self: center;
-  }
-}
-
-
-/* Enhanced Table */
-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  margin-top: 20px;
-  overflow: hidden;
-}
-thead {
-  background-color: #4CAF50;
-  color: white;
-}
-thead th {
-  padding: 5px;
-  text-align: left;
-  font-weight: bold;
-  text-transform: uppercase;
-  border: 1px solid black;
-}
-tbody tr {
-  background-color: white;
-  transition: background-color 0.3s ease-in-out;
-}
-tbody tr:nth-child(even) {
-  background-color: #1DCE1D11;
-}
-tbody tr:hover {
-  background-color: #e0f7fa;
-}
-tbody td {
-  padding: 8px;
-  text-align: left;
-  border: 1px solid black;
-}
-table .btn-small {
-  padding: 5px;
-  font-size: 14px;
-  margin: 0 0 5px 5px;
-}
-
-.btn-edit{
-
-  display: flex;
-  padding: 0;
-  justify-content: center;
-}
-</style>
 {% endblock link %}
 
 {% block content %}
@@ -166,13 +46,8 @@ table .btn-small {
           {% endfor %}
         </select>
       </p>
-      <p>Semester:
-        <select name="Semester">
-          <option value="" disabled selected>All</option>
-          {% for semester in semesters %}
-          <option value="{{ semester }}">{{ semester }}</option>
-          {% endfor %}
-        </select>
+      <p>Semester:<input type="number" name="Semester">
+        
       </p>
       <button type="submit" class="btn btn-submit">Save Assignment</button>
     </form>
@@ -217,7 +92,7 @@ table .btn-small {
   <!-- Assignments Table -->
   <section class="assignments-section">
     <h2>All Assignments</h2>
-    <table class="assignments-table">
+    <table class="table">
       <thead>
         <tr>
           <th>Title</th>
