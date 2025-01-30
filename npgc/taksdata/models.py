@@ -20,21 +20,21 @@ class Event(models.Model):
     ]
 
     name = models.CharField(max_length=200)
-    date = models.DateField()
-    description = models.TextField()
     organizer = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True, blank=True)
-    location = models.CharField(max_length=200)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
+    date = models.DateField()
     type  = models.ForeignKey(Type, on_delete=models.CASCADE, null=True, blank=True)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
+    location = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    audience_type = models.CharField(max_length=50, choices=EVENT_AUDIENCE_CHOICES)
     event_type = models.CharField(max_length=50, choices=EVENT_TYPE_CHOICES)
+    audience_type = models.CharField(max_length=50, choices=EVENT_AUDIENCE_CHOICES)
     registration_link = models.URLField(blank=True, null=True)
     poster_url = models.URLField(blank=True, null=True)
     feedback_form = models.URLField(blank=True, null=True)
     live_stream_link = models.URLField(blank=True, null=True)
+    description = models.TextField()
 
     def __str__(self):
         return self.name

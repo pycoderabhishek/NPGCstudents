@@ -11,6 +11,7 @@
 }
 .form-control {
     width: 100%;
+    height:100%;
     padding: 10px;
     margin: 8px 0;
     border: 1px solid #ccc;
@@ -41,7 +42,7 @@ textarea.form-control {
 
 .filters-form select,
 .filters-form input[type="date"] {
-  width: 100%;
+ 
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ccc;

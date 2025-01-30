@@ -21,3 +21,5 @@ class EventForm(forms.ModelForm):
             'feedback_form': forms.URLInput(attrs={'class': 'form-control'}),
             'live_stream_link': forms.URLInput(attrs={'class': 'form-control'}),
         }
+        
+        

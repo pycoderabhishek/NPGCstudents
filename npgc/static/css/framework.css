@@ -7,11 +7,7 @@ h2 {
 }
 
 
-h2:hover {
-  /* transform: scale(1.01); */
-  /* color: #257C27; */
-  /* transition: 0.3s ease; */
-}
+
 
 a {
   text-decoration: none;
@@ -233,7 +229,7 @@ a:hover {
   .profile-header {
      width: 100%;
     gap: 10px;
-    display:flex
+    display:flex;
     justify-content:center;
   }
 
@@ -330,22 +326,6 @@ a:hover {
   }
 }
 /* Extra large devices (large desktops, 1200px and up) */
-@media  {
-  .profile-info h1 {
-    font-size: 26px;
-  }
-
-  .profile-info h5 {
-    font-size: 22px;
-  }
-
-  .table th,
-  .table td {
-    font-size: 18px;
-  }
-
- 
-}
 
 .event-manager-container h1 {
   font-size: xxx-large;
@@ -357,17 +337,13 @@ a:hover {
     text-align: center;
     font-family: cursive;
 }
-.event-form-section {
-  margin: 30px auto;
-  max-width: 72%;
-  /* padding: 30px; */
-  border: 2px solid #02393e;
-}
+
 .event-form-section h2 {
   text-align: center;
 }
 form.event-form {
   padding: 30px;
+  height:100%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
