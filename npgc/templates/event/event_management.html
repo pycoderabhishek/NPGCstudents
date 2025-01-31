@@ -69,8 +69,10 @@
 
 <div class="event-manager-container">
   <h1>Event Manager
+    {% if is_admin_or_teacher %}
     <button id="formadder" class="btn " style="position: relative;display: inline;margin-right: 0;"
       onclick="formhider()"><i class="fa-brands fa-plus"></i></button>
+      {% endif %}
   </h1>
   <!-- Filters Section -->
   <section class="filters-section">
@@ -109,8 +111,9 @@
       <select name="course" id="course">
         <option value="">All</option>
         {% for course in courses %}
-        <option value="{{ course.id }}" {% if request.GET.course==course.id|stringformat:"s" %}selected{% endif %}>{{
-          course.name }}</option>
+        <option value="{{ course.id }}" {% if request.GET.course|stringformat:"s" == course.id|stringformat:"s" %}selected{% endif %}>
+          {{ course.name }}
+        </option>
         {% endfor %}
       </select>
 

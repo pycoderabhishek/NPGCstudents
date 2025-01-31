@@ -5,7 +5,8 @@
 <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
 <link rel="stylesheet" href="{% static 'css/framework.css' %}">
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
-<style>
+<!-- <style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 .section h2{
   text-align:center;
 }
@@ -15,46 +16,872 @@
     margin: 20px 0;
   }
 
+/* Profile Section */
+.profile-section {
+  margin-bottom: 30px;
+}
 
+.profile-card,
+.events-section,
+.assignments-section {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+}
+
+
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.profile-img-container {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+  left: 50px;
+  animation: fadeIn 1s ease-in-out;
+
+}
+
+
+.profile-image {
+  height: 12rem;
+  width: 12rem;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
+
+
+
+
+.profile-info h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 2s steps(20, end);
+  padding-top: 0;
+
+}
+
+.profile-info {
+  border-radius: 5px;
+  box-shadow: 0.2px 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px 20px 0 200px;
+  position: relative;
+  left: -100px;
+
+}
+
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+
+  }
+}
+
+
+.profile-info h5 {
+  font-size: 18px;
+  margin: 0px 0;
+}
+
+.profile-info p:nth-child(odd) {
+  font-weight: bold;
+  margin: 0 0 0 0;
+  font-style: italic;
+}
+
+.profile-footer {
+  display: flex;
+  width: 100%;
+}
+
+.profile-details {
+  border-radius: 5px;
+  box-shadow: 0.2px 0 4px 4px rgba(0, 0, 0, 0.1);
+  margin: 0px 20px 20px 20px;
+  padding: 10px;
+}
+
+.profile-details p {
+  margin: 5px 0 5px 0;
+  line-height: 2;
+  font-size: 14px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Media Queries */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 480px) {
+  body {
+    flex-direction: row;
+  }
+
+  .dashboard-container {
+    padding: 15px;
+    width: 100%;
+  }
+  
+  .profile-card{
+    height: 10%;
+  }
+
+  .profile-info h1 {
+    font-size: 1.5rem;
+  }
+
+
+  @keyframes typing {
+    from {
+      width: 0;
+      display: flex;
+      justify-self: center;
+      justify-content: center;
+
+    }
+
+    to {
+      width: 100%;
+      display: flex;
+      justify-self: center;
+      justify-content: center;
+    }
+
+  }
+
+
+  .profile-header {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .profile-info {
+    text-align: center;
+    width: 100%;
+    padding: 100px 20px 0 20px;
+    z-index: 98;
+    top: -80px;
+    left: 0px;
+
+  }
+
+  .profile-img-container {
+    width: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-items: center;
+    z-index: 100;
+    left: 0px;
+
+  }
+
+  .profile-image {
+    width: 9rem;
+    height: 9rem;
+
+  }
+
+  .profile-footer {
+    display: unset;
+  }
+
+  .profile-details p {
+    font-size: 12px;
+    display: flexbox;
+    align-self: center;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 768px) and (orientation: landscape){
+  .dashboard-container {
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .profile-info{
+    left:0px;
+    padding: 0;
+  }
+  .profile-img-container{
+    left:0px;
+  }
+
+  .profile-info h1 {
+    font-size: 2rem;
+  }
+
+  .profile-header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 12px;
+  }
+
+ 
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+
+  .dashboard-container {
+    padding: 25px;
+    max-width: 960px;
+  }
+
+  .profile-header {
+    justify-content: space-around;
+  }
+
+  .profile-info h1 {
+    font-size: 2.5rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 14px;
+  }
+
+  
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .dashboard-container {
+    padding: 30px;
+    /*max-width: 1200px;*/
+  }
+
+  .profile-header {
+    justify-content: space-around;
+  }
+
+  .profile-info h1 {
+    font-size: 3rem;
+  }
+
+  .profile-details p {
+    font-size: 1rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1201px) {
+
+  .profile-info h1 {
+    font-size: 26px;
+  }
+
+  .profile-info h5 {
+    font-size: 22px;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 18px;
+  }
+
+  
+}
+
+</style> -->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(90deg,#DCF8C630,#25d36620);
+  color: #333;
+  line-height: 1.6;
+  display: flex;
+}
+
+* {
+  font-family: 'impact', fantasy;
+}
+
+.sidebar {
+  width: 0%;
+  background-color: #173f35;
+  height: auto;
+}
+
+h1,
+h2 {
+  color: #1D5547;
+}
+
+
+h2:hover {
+  transform: scale(1.01);
+  color: #257C27;
+  transition: 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: #4CAF50;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #FFFFFF;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  background-color: #245F50;
+  transition: 0.3s ease;
+}
+
+/* Dashboard Container */
+.dashboard-container {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Profile Section */
+.profile-section {
+  margin-bottom: 30px;
+}
+
+.profile-card,
+.events-section,
+.assignments-section {
+  height: auto;
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  
+}
+
+
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.profile-img-container {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  border: 2px solid black;
+  border-radius: 50%;
+  position: relative;
+  z-index: 100;
+  left: 100px;
+  animation: fadeIn 1s ease-in-out;
+
+}
+
+
+.profile-image {
+  height: 12rem;
+  width: 12rem;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.profile-image:hover {
+  transform: scale(1.2);
+}
+
+
+.profile-info h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 1.5s steps(20, end);
+  padding-top: 0;
+
+}
+
+.profile-info {
+  border-radius: 5px;
+  box-shadow: 0.2px 0 4px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px 20px 0 200px;
+  position: relative;
+  z-index: 98;
+  left: -100px;
+
+}
+
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+
+  }
+}
+
+
+.profile-info h5 {
+  font-size: 18px;
+  margin: 0px 0;
+}
+
+.profile-info p:nth-child(odd) {
+  font-weight: bold;
+  margin: 0 0 0 0;
+  font-style: italic;
+}
+
+.profile-footer {
+  display: flex;
+  width: 100%;
+}
+
+
+.profile-details {
+  border-radius: 5px;
+  box-shadow: 0.2px 0 4px 4px rgba(0, 0, 0, 0.1);
+  margin: 0px 20px 20px 20px;
+  padding: 10px;
+}
+
+.profile-details p {
+  margin: 5px 0 5px 0;
+  line-height: 2;
+  font-size: 14px;
+  width: 100%;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+
+/* Events Section */
+.events-section {
+  margin-bottom: 30px;
+
+}
+
+
+.events-table-container {
+  overflow-x: auto;
+}
+
+.events-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 0px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.events-table th,
+.events-table td {
+  padding: 10px;
+  text-align: left;
+  
+}
+
+.events-table th {
+  background-color: #173f35;
+  color: white;
+  font-weight: bold;
+}
+
+.events-table td {
+  background-color: transparent;
+}
+
+.events-table tr:nth-child(even) {
+  background-color: #46A58D30;
+}
+
+.events-section h2,
+.assignments-section h2 {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: center;
+}
+
+/* Assignments Section */
+.assignments-section {
+  margin-bottom: 30px;
+}
+
+.details {
+  cursor: pointer;
+  color: #4CAF50;
+}
+
+/* Buttons */
+.buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.buttons .btn {
+  margin-right: 10px;
+  box-shadow: 0 3px 9px 3px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Media Queries */
+
+/* Extra small devices (portrait phones, less than 576px) */
+@media (max-width: 480px) {
+  body {
+    flex-direction: row;
+  }
+
+  .dashboard-container {
+    padding: 15px;
+    width: 100%;
+  }
+  
+  .profile-section{
+    height: auto;
+  }
+
+  .profile-info h1 {
+    font-size: 1.5rem;
+  }
+
+
+  @keyframes typing {
+    from {
+      width: 0;
+      display: flex;
+      justify-self: center;
+      justify-content: center;
+
+    }
+
+    to {
+      width: 100%;
+      display: flex;
+      justify-self: center;
+      justify-content: center;
+    }
+
+  }
+
+
+  .profile-header {
+    width: 100%;
+    gap: 10px;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .profile-info {
+    text-align: center;
+    width: 100%;
+    padding: 100px 20px 0 20px;
+    z-index: 98;
+    top: -80px;
+    left: 0px;
+    
+
+  }
+
+  .profile-img-container {
+    width: auto;
+    border-radius: 50%;
+    display: flex;
+    justify-items: center;
+    z-index: 100;
+    left: 0px;
+
+  }
+
+  .profile-image {
+    width: 9rem;
+    height: 9rem;
+
+  }
+  
+  
+  /* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-image:hover {
+  transform: scale(1.2);
+}
+
+  .profile-footer {
+    display: unset;
+  }
+
+  .profile-details p {
+    font-size: 12px;
+    display: flexbox;
+    align-self: center;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 10px;
+    padding: 5px;
+  }
+
+  .btn {
+    padding: 4px 8px;
+    font-size: 14px;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 768px) and (orientation: landscape){
+  .dashboard-container {
+    padding: 20px;
+    width: 100%;
+  }
+  
+  .profile-info{
+    left:0px;
+    padding: 0;
+  }
+  .profile-img-container{
+    left:0px;
+  }
+
+  .profile-info h1 {
+    font-size: 2rem;
+  }
+
+  .profile-header {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 12px;
+  }
+
+  .btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 992px) {
+
+
+
+  .dashboard-container {
+    padding: 25px;
+    max-width: 960px;
+  }
+
+  .profile-header {
+    justify-content: space-around;
+  }
+
+  .profile-info h1 {
+    font-size: 2.5rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 14px;
+  }
+
+  .btn {
+    padding: 10px 15px;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .dashboard-container {
+    padding: 30px;
+    /*max-width: 1200px;*/
+  }
+
+  .profile-header {
+    justify-content: space-around;
+  }
+
+  .profile-info h1 {
+    font-size: 3rem;
+  }
+
+  .profile-details p {
+    font-size: 1rem;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 16px;
+  }
+
+  .btn {
+    padding: 12px 18px;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1201px) {
+
+  .profile-info h1 {
+    font-size: 26px;
+  }
+
+  .profile-info h5 {
+    font-size: 22px;
+  }
+
+  .events-table th,
+  .events-table td {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 14px 24px;
+    font-size: 20px;
+  }
+}
 </style>
 {% endblock link %}
 {% block content %}
 <div class="dashboard-container">
     
   <!-- Profile Section -->
-  <section class="profile-section">
-    <div class="profile-card">
+  <section class="profile-section ">
+    <div class="profile-card ">
       <div class="profile-header">
         <div class="profile-img-container">
-            <img src="" alt="" class="profile-image">
+          <img src="{{protocol.profile_picture.url}}" alt="" class="profile-image">
         </div>
-       <div class="profile-info">
-          <h1>{{ profile.user.username }}</h1>
-          <h5>{{profile.department}}</h5>
-          {% if user.role == "teacher" %}
-          <p>{{ profile.department_post }}</p>
-
-          {% else %}
-          <p><i>{{profile.course}}</i></p>
-          <p>Semester: {{ profile.semester }}, Year: {{ profile.year }}</p>
-          {% endif %}
+        <div class="profile-info">
+          <h1>{{protocol.first_name}} {{protocol.last_name}}</h1>
+          <h5>Department of Computer Science</h5>
+          <p>Bachelor of Computer Applications</p>
+          <p>Semester: 2, Year: 1</p>
         </div>
       </div>
-      <div class="profile-details">
-        {% if user.role == "teacher" %}
-        <p><strong>Qualifications:</strong> {{ profile.qualification }}</p>
-        <p><strong>Specialization:</strong> {{ profile.specialization }}</p>
-        <p><strong>Date of Joining:</strong> {{ profile.date_of_joining|date:"d M Y" }}</p>
-        <p><strong>Experience:</strong> {{ profile.experience_years }} years</p>
-        <p><strong>Subjects Assigned:</strong> {{ profile.subjects_assigned }}</p>
-        {% else %}
-        <p><strong>Contact:</strong> {{ profile.contact }}</p>
-        <p><strong>Date of Birth:</strong> {{ profile.date_of_birth|date:"d M Y" }}</p>
-        <p><strong>Address:</strong> {{ profile.address }}</p>
-        <p><strong>Guardian:</strong> {{ profile.guardian_name }} ({{ profile.guardian_contact }})</p>
-        <p><strong>Scholarship Status:</strong> {{ profile.scholarship_status }}</p>
-        <p><strong>Attendance:</strong> {{ profile.attendance_percentage }}%</p>
-        {% endif %}
+      <div class="profile-footer">
+        <div class="profile-details">
+          <h2>Details</h2>
+          <p><strong>Contact:</strong> 1234567890</p>
+          <p><strong>Date of Birth:</strong> 01 Jan 2000</p>
+          <p><strong>Address:</strong> Address details go here</p>
+          <p><strong>Guardian:</strong> Guardian Name (Guardian Contact)</p>
+          <p><strong>Scholarship Status:</strong> Active</p>
+          <p><strong>Attendance:</strong> 85%</p>
+        </div>
+        <div class="profile-details">
+          <h2>Details</h2>
+          <p><strong>Contact:</strong> 1234567890</p>
+          <p><strong>Date of Birth:</strong> 01 Jan 2000</p>
+          <p><strong>Address:</strong> Address details go here</p>
+          <p><strong>Guardian:</strong> Guardian Name (Guardian Contact)</p>
+          <p><strong>Scholarship Status:</strong> Active</p>
+          <p><strong>Attendance:</strong> 85%</p>
+        </div>
+        <div class="profile-details">
+          <h2>Details</h2>
+          <p><strong>Contact:</strong> 1234567890</p>
+          <p><strong>Date of Birth:</strong> 01 Jan 2000</p>
+          <p><strong>Address:</strong> Address details go here</p>
+          <p><strong>Guardian:</strong> Guardian Name (Guardian Contact)</p>
+          <p><strong>Scholarship Status:</strong> Active</p>
+          <p><strong>Attendance:</strong> 85%</p>
+        </div>
       </div>
     </div>
   </section>

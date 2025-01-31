@@ -32,17 +32,19 @@ def event_management(request):
     is_admin_or_teacher = user.role in ['administrator', 'teacher']
 
     if request.method == 'POST' and is_admin_or_teacher:
-        form = EventForm(request.POST)
+        form = EventForm(request.POST, user=user)  # Pass user to form
         if form.is_valid():
             event = form.save(commit=False)
-            event.organizer = user.teacher if user.role == 'teacher' else None
+            if user.role == 'teacher':
+                event.organizer = user.teacher  # Assign logged-in teacher as organizer
+                event.department = user.teacher.department  # Assign teacher's department
             event.save()
             messages.success(request, 'Event saved successfully!')
             return redirect('event_management')
         else:
             messages.error(request, 'Failed to save event. Please check the form for errors.')
     else:
-        form = EventForm()
+        form = EventForm(user=user)  # Pass user to form
 
     departments = Department.objects.all()
     courses = Course.objects.all()
