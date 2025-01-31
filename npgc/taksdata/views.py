@@ -3,7 +3,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Event,Assignment
-from .forms import EventForm
+from .forms import AssignmentForm,EventForm
 from department.models import Department, Course
 
 def filter_events(request):
@@ -105,24 +105,35 @@ def filter_assignments(request):
 
     return assignments
 
+
 @login_required
 def assignment_management(request):
     """View for managing and displaying assignments."""
     user = request.user
     is_admin_or_teacher = user.role in ['administrator', 'teacher']
-
-
-    departments = Department.objects.all()
-    courses = Course.objects.all()
-    if user.role == 'student':
-        assignments = filter_assignments(request)
+    
+    # Handle form submission
+    if request.method == 'POST':
+        form = AssignmentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('assignment_management')
     else:
-        assignments = filter_assignments(request)
+        form = AssignmentForm()
+
+    # Filtering assignments based on user role
+    if user.role == 'student':
+        assignments = Assignment.objects.filter(course__students=user)
+    elif is_admin_or_teacher:
+        assignments = Assignment.objects.all()
+    else:
+        assignments = Assignment.objects.none()
 
     context = {
-        'departments': departments,
-        'courses': courses,
+        'form': form,
         'assignments': assignments,
+        'departments': Department.objects.all(),
+        'courses': Course.objects.all(),
         'is_admin_or_teacher': is_admin_or_teacher,
     }
     return render(request, 'assignments/assignment_management.html', context)

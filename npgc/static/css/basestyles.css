@@ -385,6 +385,16 @@
 }
 
 /* === Reset Styles === */
+body {
+    font-family: 'Poppins', sans-serif;
+  }
+  h1, h2 {
+    font-family: 'Playfair Display', serif;
+  }
+  code {
+    font-family: 'Fira Code', monospace;
+  }
+  
 * {
   margin: 0;
   padding: 0;

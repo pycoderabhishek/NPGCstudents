@@ -6,6 +6,15 @@
 <link rel="stylesheet" href="{% static 'css/framework.css' %}">
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
 <style>
+.section h2{
+  text-align:center;
+}
+.section{
+    background-color:white;
+    padding:20px;
+    margin: 20px 0;
+  }
+
 
 </style>
 {% endblock link %}
@@ -50,10 +59,10 @@
     </div>
   </section>
   <!-- Events Section -->
-  <section class="events-section">
+  <section class="section">
     <h2>Upcoming Events</h2>
     <div class="events-table-container">
-      <table class="events-table">
+      <table class="table">
         <thead>
           <tr>
             <th>Event Name</th>
@@ -93,10 +102,10 @@
 
 
   <!-- Assignments Section -->
-  <section class="assignments-section">
+  <section class="section">
     <h2>Assignments</h2>
     <div class="events-table-container">
-      <table class="events-table">
+      <table class="table">
         <thead>
           <tr>
             <th>Assignment Name</th>

@@ -42,15 +42,15 @@ class Event(models.Model):
 # Assignment Model
 class Assignment(models.Model):
     title = models.CharField(max_length=200)
-    description = models.TextField()
-    submission_date = models.DateField()
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    department = models.ForeignKey(Department, on_delete=models.CASCADE)
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    semester = models.IntegerField(blank=True ,null=True)
+    submission_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     total_marks = models.IntegerField()
-    semester = models.IntegerField(blank=True ,null=True)
+    description = models.TextField()
     late_submission_policy = models.TextField()
 
     def __str__(self):
