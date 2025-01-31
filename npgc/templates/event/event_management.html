@@ -101,8 +101,7 @@
       <select name="department" id="department">
         <option value="">All</option>
         {% for dept in departments %}
-        <option value="{{ dept.id }}" {% if request.GET.department==dept.id|stringformat:"s" %}selected{% endif %}>{{
-          dept.name }}</option>
+        <option value="{{ dept.id }}" {% if request.GET.department|stringformat:"s" == dept.id|stringformat:"s" %}selected{% endif %}>{{ dept.name }}</option>
         {% endfor %}
       </select>
 
