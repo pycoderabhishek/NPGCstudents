@@ -137,9 +137,6 @@
 {% block content %}
 
 
-{% if error %}
-<p style="color: red;">{{ error }}</p>
-{% endif %}
 
 
 <div class="bodybox">
@@ -153,6 +150,15 @@
             <div class="input-field">
                 <input id="password" name="password" type="password" placeholder="Password" required>
             </div>
+ {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+
+<p style="color: red;"> {{ message }}}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+
             <button id="logInBtn" class="btn" type="submit">Login</button>
         </form>
     </div>

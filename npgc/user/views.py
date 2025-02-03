@@ -6,21 +6,27 @@ from django.contrib import messages
 from taksdata.models import Event,Assignment,Notification
 # Login View
 def user_login(request):
-    if request.user.is_authenticated:
-           return redirect('dashboard')  # Redirect to a unified dashboard
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
 
+        try:
+            # Attempt to authenticate the user
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                # Successful login, log the user in
+                login(request, user)
+                return redirect('dashboard')  # Redirect to the home page or another page
+            else:
+                # Authentication failed, show an error message
+                messages.error(request, "Invalid username or password")
+                return render(request, 'login.html')  # Return to login page with message
+        except Exception as e:
+            # If there is any error during the process, log it and show a generic error message
+            messages.error(request, f"An error occurred: {str(e)}")
+            return render(request, 'login.html')
     else:
-       if request.method == 'POST':   # Ensure this is a POST request
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('dashboard')  # Redirect to a unified dashboard
-        else:
-            messages.error(request, "Invalid username or password")
-    return render(request, 'login.html')
+        return render(request, 'login.html')
 
 # Logout View
 def dashboard(request):

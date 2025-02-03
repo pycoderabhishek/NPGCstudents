@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Course,Department,Type
-# Register your models here.
-admin.site.register(Course)
+from .models import Department,Course,SubType,Type
+
+admin.site.register(SubType)
 admin.site.register(Department)
+admin.site.register(Course)
 admin.site.register(Type)
