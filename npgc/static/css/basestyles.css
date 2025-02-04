@@ -1,13 +1,17 @@
 
 
 .container {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-rows: 0 7% 93%;
     width:100%;
+
+  background: #e7f5db;
+  margin: 0 auto;
+  padding: 0;
+
 }
 
 .sidebar {
-    width: 7%;
     height: 100vh;
     background-color: #075e54;
     /* color: #dcf8c6; */
@@ -76,7 +80,7 @@
     /* justify-content: center; */
     /* align-items: center; */
     /* margin: 0 auto; */
-    
+
     box-shadow: #c9f1a9 0px 0px 10px;
 }
 
@@ -394,7 +398,7 @@ body {
   code {
     font-family: 'Fira Code', monospace;
   }
-  
+
 * {
   margin: 0;
   padding: 0;

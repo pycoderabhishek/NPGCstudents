@@ -79,7 +79,7 @@ DATABASES = {
     'default': {
 
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'npgcstudents$default',
+        'NAME': 'npgcstudents$npgcstudentsnew',
         'USER': 'npgcstudents',
         'PASSWORD': 'database',
         'HOST': 'npgcstudents.mysql.pythonanywhere-services.com',  # Aapka system ka public IP
