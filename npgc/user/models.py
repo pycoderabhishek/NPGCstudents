@@ -1,10 +1,8 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 from django.contrib.auth.models import AbstractUser
-from department.models import Course
-from department.models import Department
+from department.models import Course,Department,Programe,Minor,Major,Vocational
 
 
 class User(AbstractUser):
@@ -36,10 +34,11 @@ class Student(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     semester = models.IntegerField()
     year = models.IntegerField()
+    programe = models.ForeignKey(Programe, on_delete=models.CASCADE,null=True,blank=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE,null=True,blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    minor = models.CharField(max_length=100, blank=True, null=True)
-    vocational = models.CharField(max_length=100, blank=True, null=True)
+    minor = models.ForeignKey(Minor, on_delete=models.CASCADE,null=True,blank=True)
+    vocational = models.ForeignKey(Vocational, on_delete=models.CASCADE,null=True,blank=True)
     contact = models.CharField(max_length=15)
     date_of_birth = models.DateField()
     address = models.TextField()

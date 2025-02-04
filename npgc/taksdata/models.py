@@ -1,5 +1,5 @@
 from django.db import models
-from department.models import Department,Course,Type
+from department.models import Department,Course,Programe
 from user.models import Teacher,User,Student
 
 # Event Model
@@ -22,7 +22,7 @@ class Event(models.Model):
     name = models.CharField(max_length=200)
     organizer = models.ForeignKey(Teacher, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateField()
-    type  = models.ForeignKey(Type, on_delete=models.CASCADE, null=True, blank=True)
+    program  = models.ForeignKey(Programe, on_delete=models.CASCADE, null=True, blank=True)
     department = models.ForeignKey(Department, on_delete=models.CASCADE, null=True, blank=True)
     course = models.ForeignKey(Course, on_delete=models.CASCADE, null=True, blank=True)
     location = models.CharField(max_length=200)
