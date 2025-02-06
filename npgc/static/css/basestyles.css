@@ -2,8 +2,10 @@
 
 .container {
     display: grid;
-    grid-template-rows: 0 7% 93%;
-    width:100%;
+
+
+    width: 100%;
+
 
   background: #e7f5db;
   margin: 0 auto;
@@ -62,9 +64,8 @@
 }
 
 .main-content {
-    margin-left: 7%;
-    flex: 1;
-    max-width:93%;
+width: 97%;
+    margin: 0 0 0 3%;
 }
 
 .top-header {
@@ -431,11 +432,6 @@ body {
   align-items: center;
 }
 /* Layout */
-.container {
-  width: 100%;
-  background: #e7f5db;
-  margin: 0 auto;
-  padding: 0;
-}
+
 
 

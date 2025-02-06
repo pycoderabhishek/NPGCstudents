@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'department.apps.DepartmentConfig',
     'taksdata.apps.TaksdataConfig',
     'whatsapp.apps.WhatsappConfig',
+    'chatbot.apps.ChatbotConfig',
 
 ]
 

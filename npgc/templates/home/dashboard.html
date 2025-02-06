@@ -29,7 +29,7 @@
   border-radius: 5px;
   padding: 20px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  
+
 }
 
 
@@ -52,7 +52,7 @@
   position: relative;
   left: 50px;
   animation: fadeIn 1s ease-in-out;
-
+  z-index: 100;
 }
 
 
@@ -81,7 +81,8 @@
   box-shadow: 0.2px 0 4px 4px rgba(0, 0, 0, 0.1);
   padding: 20px 20px 0 200px;
   position: relative;
-  left: -100px;
+  left: -100px
+ z-index:98;
 
 }
 
@@ -143,7 +144,7 @@
     padding: 15px;
     width: 100%;
   }
-  
+
   .profile-card{
     height: 10%;
   }
@@ -222,7 +223,7 @@
     padding: 5px;
   }
 
-  
+
 }
 
 /* Small devices (landscape phones, 576px and up) */
@@ -231,7 +232,7 @@
     padding: 20px;
     width: 100%;
   }
-  
+
   .profile-info{
     left:0px;
     padding: 0;
@@ -254,7 +255,7 @@
     font-size: 12px;
   }
 
- 
+
 }
 
 /* Medium devices (tablets, 768px and up) */
@@ -280,7 +281,7 @@
     font-size: 14px;
   }
 
-  
+
 }
 
 /* Large devices (desktops, 992px and up) */
@@ -328,14 +329,14 @@
     font-size: 18px;
   }
 
-  
+
 }
 
 </style>
 {% endblock link %}
 {% block content %}
 <div class="dashboard-container">
-    
+
   <!-- Profile Section -->
   <section class="profile-section ">
     <div class="profile-card ">

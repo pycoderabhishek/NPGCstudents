@@ -9,7 +9,7 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('whatsapp',include('whatsapp.urls')),
     path('events',include('taksdata.urls')),
-    
+    path('chatbot',include('chatbot.urls')),
     path('teacher/dashboard/', views.teacher_dashboard, name='teacher_dashboard'),
     path('student/dashboard/', views.student_dashboard, name='student_dashboard'),
     path('administrator/dashboard/', views.admin_dashboard, name='admin_dashboard'),
@@ -20,5 +20,5 @@ urlpatterns = [
     # path('admin/manage/events/', views.manage_events, name='manage_events'),
     path('admin/manage/assignments/', views.manage_assignments, name='manage_assignments'),
     path('admin/manage/notifications/', views.manage_notifications, name='manage_notifications'),
-                   
+
 ]

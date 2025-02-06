@@ -7,6 +7,7 @@ from .forms import GroupForm
 @login_required
 def whatsapp_home(request):
     user = request.user  # Get the logged-in user
+    is_admin_or_teacher = user.role in ['administrator', 'teacher']
     role = user.role  # Assuming the `User` model has a `role` field
     groups = Group.objects.none()  # Default to an empty queryset
 
@@ -15,10 +16,17 @@ def whatsapp_home(request):
         if accesid:
             groups = Group.objects.filter(course_id=accesid.course,semester=accesid.semester)
 
+        # Divide groups into categories
+            minor_groups = groups.filter(group_category="minor")
+            major_groups = groups.filter(group_category="major")
+            vocational_groups = groups.filter(group_category="vocational")
     elif role == 'teacher':
         accesid = Teacher.objects.filter(user=user).first()  # Safely get the first record
         if accesid:
             groups = Group.objects.filter(department_id=accesid.department)
+            minor_groups = groups.filter(group_category="minor")
+            major_groups = groups.filter(group_category="major")
+            vocational_groups = groups.filter(group_category="vocational")
 
     elif role == 'Administrator':
         groups = Group.objects.all()  # Administrators can access all groups
@@ -37,6 +45,9 @@ def whatsapp_home(request):
         form = GroupForm()
 
     return render(request, 'whatsapp/dashboard.html', {
-        "groups": groups,
+        'minors':minor_groups,
+        'majors':major_groups,
+        'vocationals':vocational_groups,
+        'is_admin_or_teacher': is_admin_or_teacher,
         "form": form  # Pass the form to the template for rendering
     })

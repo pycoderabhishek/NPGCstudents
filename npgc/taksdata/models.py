@@ -1,5 +1,5 @@
 from django.db import models
-from department.models import Department,Course,Programe
+from department.models import Department,Course,Programe,Minor,Vocational
 from user.models import Teacher,User,Student
 
 # Event Model
@@ -45,6 +45,8 @@ class Assignment(models.Model):
     teacher = models.ForeignKey(Teacher, on_delete=models.CASCADE)
     department = models.ForeignKey(Department, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    minor = models.ForeignKey(Minor, on_delete=models.CASCADE)
+    vocational = models.ForeignKey(Vocatonal, on_delete=models.CASCADE)
     semester = models.IntegerField(blank=True ,null=True)
     submission_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
