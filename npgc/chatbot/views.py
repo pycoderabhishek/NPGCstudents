@@ -6,22 +6,49 @@ from django.views.decorators.csrf import csrf_exempt
 import json
 # Predefined chatbot responses
 RESPONSES = {
-    "hello": "Hi there! How can I assist you?",
-    "hi": "Hi there! How can I assist you?",
-    "fees": "The fee payment process is available on the college portal. Navigate to 'Finance' and follow the instructions.",
-    "schedule": "You can view your schedule in the dashboard under the 'Timetable' section.",
-    "marks": "Your marks can be accessed by logging into your account and clicking on 'Results' in the navigation menu.",
-    "library": "The library is open from 8 AM to 4 PM on weekdays. You can check available books on the library portal.",
-    "hostel": "Hostel-related queries can be addressed at the Hostel Office.",
-    "canteen": "The canteen serves food from 8 AM to 6 PM. The menu is updated daily on the canteen board.",
-    "clubs": "You can join clubs by filling out the registration form available on the 'Clubs and Activities' page.",
-    "exams": "Exam dates and schedules are published in the 'Examination' section of the portal.",
-    "admissions": "Admissions queries can be addressed at the Admissions Office or via the 'Admissions' tab on the website.",
-    "attendance": "Your attendance record is available under the 'Attendance' tab on your dashboard.",
-    "transport": "College buses operate on predefined routes. You can view the bus schedule on the 'Transport' section.",
-    "placements": "Placement details are available in the 'Placement Cell' section.",
-    "contact": "For assistance, contact info@college.com or call the helpline +91-1234567890.",
+    "what can you do": "I can help you with fee payments, class schedules, marks, library services, hostel queries, and much more! Feel free to ask any questions, and I'll guide you.",
+    "hello": "Hi there! How can I assist you today?",
+    "hi": "Hi there! How can I assist you today?",
+    "fees": "You can find the fee payment process on your college portal. Please log in and navigate to the 'Finance' section for details.",
+    "schedule": "Your class schedule can be viewed in the 'Timetable' section of your student portal. Log in to check it.",
+    "marks": "To view your marks, log in to your portal and go to the 'Results' section.",
+    "library": "The library operates from 8 AM to 4 PM on weekdays. For book availability, please check the library portal.",
+    "hostel": "Hostel-related queries should be directed to the Hostel Office. For fees or rules, refer to the 'Hostel' section of the portal.",
+    "exams": "For exam schedules and updates, check the 'Exams' section of your student portal for the latest information.",
+    "attendance": "You can track your attendance by logging into the portal and going to the 'Attendance' section.",
+    "results": "Your results will be posted in the 'Results' section of your portal after exams are graded.",
+    "cafeteria": "The cafeteria is open from 7 AM to 7 PM on weekdays. You can check the menu and timings on the portal.",
+    "sports": "For information on sports activities, visit the 'Sports' section on your portal or contact the Sports Office.",
+    "events": "To stay informed about upcoming events, check the 'Events' section on your portal or the college's notice board.",
+    "placements": "Placement details can be found under the 'Placements' section of your portal or by contacting the Placement Office.",
+    "scholarships": "Scholarship details and application forms are available in the 'Scholarships' section on the portal.",
+    "hostel rules": "Hostel rules and regulations can be found on your portal under the 'Hostel' section. Please review them for important guidelines.",
+    "internships": "For internship opportunities, please visit the 'Internships' section of the portal or reach out to the Internship Office.",
+    "admissions": "For admission-related queries, please refer to the 'Admissions' section on the portal or contact the Admissions Office.",
+    "course registration": "Course registration information can be found in the 'Registration' section of your portal. Be sure to complete it before the deadline.",
+    "faculty contact": "Faculty contact information can be found in the 'Faculty' section of your student portal or via the contact list shared by the department.",
+    "transport": "For transport-related queries, including bus routes and timings, check the 'Transport' section on the portal or contact the transport office.",
+    "counseling": "The Counseling Office provides support for academic and personal issues. Please visit their section on the portal for more information.",
+    "workshops": "To know more about upcoming workshops, check the 'Workshops' section on your portal or visit the notice board.",
+    "student clubs": "For information on student clubs and activities, visit the 'Clubs' section of your portal or contact the student office.",
+    "alumni": "You can find alumni details and events in the 'Alumni' section on the portal. Keep an eye out for reunion announcements.",
+    "id card": "For information on how to obtain or replace your student ID card, visit the 'Student Services' section on your portal.",
+    "medical": "For medical assistance or health-related queries, please visit the 'Medical Center' section on the portal or contact the health office.",
+    "accommodation": "For off-campus accommodation options, check the 'Accommodation' section of the portal or visit the student services office.",
+    "events calendar": "The college event calendar can be found in the 'Events' section on your portal. Stay up-to-date on all activities!",
+    "career guidance": "For career counseling or guidance, visit the 'Career Services' section on the portal or contact the Career Office.",
+    "exam results revaluation": "If you're looking to request a revaluation for your exam results, visit the 'Results' section on the portal for details.",
+    "course materials": "You can find course materials and resources in the 'Course Materials' section of the portal or contact your faculty.",
+    "communication": "For updates on official communication, check the 'Notices' section on your portal or refer to your department's announcements.",
+    "test schedules": "Test schedules are available in the 'Test Schedules' section of your portal. Be sure to check it regularly for updates.",
+    "timetable change": "In case of timetable changes, updates will be posted in the 'Timetable' section of your portal.",
+    "freshers": "For information related to freshers' orientation, please refer to the 'Freshers' section on your portal or the student office.",
+    "feedback": "For feedback on services or events, visit the 'Feedback' section on the portal or contact the student services team.",
+    "library events": "Upcoming events in the library can be found under the 'Library Events' section on your portal.",
+    "deferral": "If you need to defer your semester, check the 'Deferral' section of your portal for the application process and guidelines.",
+    "default": "I didn't quite catch that. Could you please rephrase your question?"
 }
+
 
 
 # Find the best match for user query
@@ -32,7 +59,7 @@ def find_best_match(user_message):
 
 # View for rendering chatbot page
 def chatbot(request):
-    return redirect( ' http://127.0.0.1:8000')
+    return render(request, 'chatbot_app/chatbot.html')
 
 @csrf_exempt  # Allows POST requests without CSRF token
 def get_response(request):

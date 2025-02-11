@@ -1,0 +1,509 @@
+{% extends "base.html" %}
+
+{% block link%}
+{% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
+<!-- <link rel="stylesheet" href="{% static 'css/form.css' %}"> -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!-- Bootstrap JS (Includes Popper.js) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+*{
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.poppins-eb ,h3 {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+}
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    line-height: 1;
+    display: flex;
+  }
+
+  * {
+
+    line-height: 1.2;
+  }
+
+  /*==EXTRA CLASSES FOR STYLING==*/
+
+
+  /* === Dashboard Container === */
+  .dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px 20px 10px;
+    height: auto;
+    /* Adjust height for better responsiveness */
+    /*width: 100%; */
+    /*background-color: #fff;*/
+  }
+
+  /* === Carousel Item === */
+  .carousel-item p {
+    background-color: #173F35;
+    /* Green */
+    height: 2rem;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #FFFFFF;
+    padding: 15px;
+    margin: 0;
+  }
+
+  .carousel-item p2 {
+    background-color: #292929;
+    height: 2.5rem;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: #FFFFFF;
+    padding: 15px;
+  }
+
+  /*==COLLEGE MOTO==*/
+  pre{
+    color: #fff;
+    margin: 40px;
+    font-weight: bold;
+   font-size: 1.5rem;
+    background-color: #173f35;
+    padding: 10px;
+
+  }
+
+  /* === Dashboard Content === */
+  .dashboard-content {
+    display: block;
+    justify-content: center;
+    gap: 20px;
+    height: auto;
+    width: auto;
+  }
+
+  .horizontal-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 20px;
+    border-radius: 10px;
+  }
+
+  /* === Card Styles === */
+  .card {
+    background-color: #FFFF;
+    border-radius: 8px;
+    width: auto;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .text-justify-box{
+    width:auto;
+    height: auto;
+    text-align: justify;
+  }
+  .card h3 {
+    margin-bottom: 15px;
+
+    font-weight: bold;
+    color: #173f35;
+  }
+
+  .card p {
+    color: #000;
+    font-weight: bold;
+    line-height: 1.4;
+  }
+
+  span{
+    font-weight: bold;
+    margin: 10px 0 0 0;
+    line-height: 1.4;
+    text-align: justify;
+  }
+
+  .card a {
+    display: block;
+    margin-top: 15px;
+    background-color: transparent;
+    /* Green */
+    color:#00ee34:
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .card img {
+    height: 3rem;
+    width: 3rem;
+
+  }
+
+  .card a:hover {
+    background-color: #46A58D30;
+    /* Darker Green */
+  }
+
+  /*===Notification-card===*/
+  .Notification-card{
+    border: 2px solid #173f3588;
+    border-radius: 5px;
+    padding: 10px;
+    margin:10px 0;
+    background-color: #46A58D10;
+  }
+
+  /* === Footer Styles === */
+  footer {
+    min-width: 95%;
+    width: 100%;
+    /*position: relative;*/
+    bottom: 0;
+  }
+
+  .footer {
+    background-color: #173F35;
+    /* Green */
+    color: white;
+    padding: 10px;
+  }
+
+  .footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    object-fit: contain;
+  }
+
+  .footer-section {
+    margin: 10px;
+    min-width: 200px;
+  }
+
+  .footer-section h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #F5F5DC;
+    /* Beige */
+    padding-bottom: 5px;
+  }
+
+  .footer-section ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
+  .footer-section ul li {
+    margin: 5px 0;
+  }
+
+  .footer-section ul li a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .footer-section ul li a:hover {
+    color: #F5F5DC;
+    /* Beige */
+    text-decoration: underline;
+  }
+
+
+  /* === Responsive Styles === */
+  /* === Desktop Styles (Large Screens) === */
+  @media (min-width: 1024px) {
+
+    /* Dashboard Content */
+    .dashboard-container {
+      max-width: 1200px;
+      /*margin: 0 auto;
+    padding: 20px; */
+      width: auto;
+    }
+
+    .dashboard-content {
+      display: grid;
+      /*grid-template-columns: repeat(3, 1fr);*/
+      gap: 30px;
+      justify-items: center;
+    }
+
+    .card {
+      width: 100%;
+      margin: 10px;
+    }
+
+    .footer-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-section {
+      text-align: left;
+    }
+
+  }
+
+
+  /* === Desktop-Specific Section (Wide Screens) === */
+  @media (min-width: 1201px) {
+    .dashboard-container {
+      max-width: 1400px;
+      /*padding: 30px;*/
+    }
+
+    .dashboard-content {
+      /* grid-template-columns: repeat(4, 1fr); */
+      gap: 40px;
+    }
+
+    .footer-container {
+      justify-content: space-around;
+    }
+  }
+
+
+  @media (max-width: 1200px) {
+    .dashboard-content {
+      display: grid;
+      gap: 20px;
+      width: 100%;
+    }
+
+  }
+
+  @media (max-width: 768px) {
+    .footer-container {
+    }
+
+    .footer-section h4 {
+      font-size: unset;
+    }
+
+    .footer-section ul li a {
+      /*text-align: center;*/
+      font-size: 12px;
+    }
+
+  }
+
+  @media (max-width: 480px) {
+    .dashboard-content {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    pre {
+      font-size: 12px;
+
+    }
+
+    /* === Carousel Item === */
+    .carousel-item p {
+      font-size: 0.8rem;
+    }
+
+    .carousel-item p2 {
+      font-size: 0.5rem;
+      line-height: 1;
+    }
+
+    .footer-section {
+      width: auto;
+    }
+
+    .footer-section h4 {
+      font-size: 12px;
+    }
+
+    .footer-section ul li {
+      margin: 0px 0;
+    }
+
+    .footer-section ul li a {
+      font-size: 10px;
+    }
+
+
+    .card h3 {
+     font-size: 18px;
+     font-family: popp;
+    }
+
+    .card p {
+      font-size: 10px;
+    }
+
+    span {
+      font-size: 10px;
+    }
+
+    .card a {
+      font-size: 0.7rem;
+    }
+
+    .Notification-card h5{
+      font-size: 14px;
+    }
+
+  }
+</style>
+
+{% endblock link %}
+
+{% block content %}
+<div class="dashboard-container">
+  <!-- Carousel Section -->
+  <div id="carouselExampleAutoplaying" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'image/slide-2.jpg' %}" class="d-block w-100 h-100" alt="Slide 1">
+        <p>Welcome to National P.G. College</p>
+        <p2>We Design the Future and Set Trends for others to follow.</p2>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'image/slide-3.jpg' %}" class="d-block w-100 h-100" alt="Slide 2">
+        <p>Grade 'A' College</p>
+        <p2>Grade 'A' Accredited by NAAC & Autonomous and College with Potential for Excellence (CPE) by UGC</p2>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <pre>"MARITUM ETHICUS" i.e. Merit With Ethics.</pre>
+  <div class="dashboard-content">
+    <div class="card" style="display:block;">
+      <h3>Notifications</h3>
+       {% for notification in notifications %}
+       {% if notification %}
+      <div class="Notification-card">
+       <h5>{{ notification.title }}</h5>
+      <span class="Notification">{{ notification.message }}</span>
+      {% if notification.attachment_link %}
+      <a href="{{ notification.attachment_link }}" target="_blank">Attachment</a>
+      {% else%}
+      {%endif%}
+     </div>
+     {% else %}
+     No notifications to show
+    {%endif%}
+     {% endfor %}
+    </div>
+
+    <div class="card">
+      <div class="horizontal-container">
+        <a href="http://result.npgc.in/"><img class="" src="{% static 'image/Result.png' %}" alt="" /><p class="m-0 p-0 " style="text-align:center; font-size:6px;">Result</p></a>
+        <a href="https://forms.gle/jufUtNPkuCwWGBWRA/"><img class="" src="{% static 'image/Alumni.png' %}" alt="" /><p class="m-0 p-0 " style="text-align:center; font-size:6px;">Alumni</p></a>
+        <a href="https://www.npgc.in/StudentSupport-Placements.aspx" class="text-black text-xs "><img class="rounded-circle " src="{% static 'image/Placement.jpeg' %}" alt="" />
+          <p class="m-0 p-0 " style="text-align:center; font-size:6px;">Placement</p>
+        </a>
+      </div>
+    </div>
+    <div class="card">
+      <h3>National Post Graduate College</h3>
+      <img class=" w-100 h-50" src="{% static 'image/slide-2.jpg' %}" alt="" />
+      <span>National Post Graduate College was established in the year 1974 by the then Chief-minister of Uttar Pradesh, Late Chandra Bhanu Gupta. The college is situated close to the banks of river Gomti in the heart of the city has lush green campus and is surrounded by a number of major institutions - Academic and Administrative. </span>
+
+<span>In a city of 16 Universities and more than 150 degree colleges, National P.G. College is the only college which enjoys the highest status of CPE (College with Potential for Excellence) and Autonomous Status. The College offers under-graduate and post-graduate courses in Arts and Commerce faculties and under-graduate courses in Science and Computer faculties. The college also offers under graduate and post graduate programs for skill development under Deen Dayal Upadhyay Kaushal Kendra established with the special grant from University Grants Commission (UGC). There are six programs being offered under the scheme - two one-year programs under Community College and two degree and two post graduate programs under Deen Dayal Upadhyay Kaushal Kendra are being offered. DDUKK has components of ICT, ITES and Banking, Insurance and Financial services.</span>
+
+<span>Well-equipped labs, computerised rich library, e-library, data analysis centre and air-conditioned reading room are some of the basic state of the art educational facilities.</span>
+
+<span>Study centre for IGNOU and Uttar Pradesh Rajarshi Tandon Open University, Allahabad are offering a number of certificate, diploma and degree programs in distant mode. Regular consultation classes and remedial sessions are held for the students of the programs under IGNOU and UPRTOU.</span>
+
+<span>NSS and NCC programs are part of outreach activities of the college inculcating the patriotism and the feeling of social service in the students.</span>
+
+<span>College offers rigorous training for a number of indoor and outdoor sports such as Chess, Table Tennis, Lawn Tennis, Bad Minton, athletics and cricket. District level inter degree collegiate cricket tournaments - Chandra Bhanu Gupta Inter Degree Collegiate Cricket Tournaments, Amit Singh Trophy. The tournament is now in its 20's</span>
+
+<span>The single life force functioning behind the college administration is to provide quality education with the objective of inculcating virtues of disciplined, dedicated and good citizens in the students.</span>
+
+<span>The students thus succeed in creating a society which has love, freedom, liberty, justice, equality and fraternity</span>
+
+    </div>
+    <div class="card ">
+      <div class="text-justify-box">
+      <h3>Achievements</h3>
+      <p>The only Autonomous College of Lucknow University.</p>
+      <p>Introduction of semester system at UG level in the right earnest.</p>
+      <p>Induction of PG in three subjects in Arts faculty i.e. Anthropology,Geography and Psychology.</p>
+      <p>Introduction of compulsory elective papers has been done with a view to versatile development of the student.</p>
+      <p>Introduction of coaching for NET and competitive exams for weaker sections of the society and minority groups.</p>
+      <p>UGC Sponsored Program (PGDRM, Analytical Techniques &amp; Instrumental Analysis,Computer Application,Forensic Science)</p>
+      <p>Introduction of remedial classes for weaker students.</p>
+      <p>Internal assessment based on class tests, assignments and class presentation and performance forms the part of final examination.</p>
+      <p>The curriculum is subjected to scrutiny time to time by the Board of Studies. Regular changes with reference to the current scenario are recommended for inclusion.</p>
+
+    </div>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+    <!-- About Section -->
+    <div class="footer-section">
+      <h4>About</h4>
+      <ul>
+        <li><a href="https://www.npgc.in/About-AboutTheCollege.aspx">About us</a></li>
+        <li><a href="https://www.npgc.in/ContactUs.aspx">Contact us</a></li>
+        <li><a href="https://www.npgc.in/About-AboutTheCollege.aspx#">Privacy policy</a></li>
+        <li><a href="https://www.npgc.in/About-AboutTheCollege.aspx#">Terms & Conditions</a></li>
+        <li><a href="https://www.npgc.in/About-AboutTheCollege.aspx#">Accessibility</a></li>
+      </ul>
+    </div>
+    <!-- Quick Links Section -->
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="http://result.npgc.in/">Result</a></li>
+        <li><a href="https://www.npgc.in/events.aspx">Academic Calendar</a></li>
+        <li><a href="https://www.npgc.in/TenderNotice.aspx">Tender Notice</a></li>
+        <li><a href="https://www.npgc.in/RTI.aspx">Right to Information (RTI)</a></li>
+        <li><a href="https://www.npgc.in/PressRelease.aspx">Press Release</a></li>
+      </ul>
+    </div>
+    <!-- External Links Section -->
+    <div class="footer-section">
+      <h4>External Links</h4>
+      <ul>
+        <li><a href="http://www.ugc.ac.in/">University Grants Commission (UGC)</a></li>
+        <li><a href="http://www.naac.gov.in/">NAAC</a></li>
+        <li><a href="http://www.lkouniv.ac.in/">University of Lucknow</a></li>
+        <li><a href="http://www.ignou.ac.in/">IGNOU</a></li>
+        <li><a href="http://www.uprtou.ac.in/">UPRTOU</a></li>
+        <li><a href="http://scholarship.up.nic.in/">State Scholarships</a></li>
+        <li><a href="http://www.employmentnews.gov.in/">Employment News</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+{% endblock %}

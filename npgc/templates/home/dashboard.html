@@ -2,11 +2,25 @@
 
 {% block link %}
 {% load static %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
 <link rel="stylesheet" href="{% static 'css/framework.css' %}">
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+  *{
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+.poppins-eb ,h2 {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
+}
 .section h2{
   text-align:center;
 }
@@ -338,50 +352,60 @@
 <div class="dashboard-container">
 
   <!-- Profile Section -->
-  <section class="profile-section ">
-    <div class="profile-card ">
-      <div class="profile-header">
-        <div class="profile-img-container">
-          <img src="{{protocol.profile_picture.url}}" alt="" class="profile-image">
+ <section class="profile-section">
+    <div class="profile-card">
+        <div class="profile-header">
+            <div class="profile-img-container">
+                <img src="{{ profile.user.profile_picture.url }}" alt="{{ profile.user.first_name }} {{ profile.user.last_name }}" class="profile-image">
+            </div>
+            <div class="profile-info">
+                <h1>{{ profile.user.first_name }} {{ profile.user.last_name }}</h1>
+                <h5>{{ profile.department }}</h5>
+                <p>{{ profile.user.role }}</p>
+
+                {% if profile.user.role == 'student'%}
+                <p>{{ profile.programe }}</p>
+                <p>Semester: {{ profile.semester }}, Year: {{ profile.year }}</p>
+                {% endif %}
+            </div>
         </div>
-        <div class="profile-info">
-          <h1>{{protocol.first_name}} {{protocol.last_name}}</h1>
-          <h5>Department of Computer Science</h5>
-          <p>Bachelor of Computer Applications</p>
-          <p>Semester: 2, Year: 1</p>
+        <div class="profile-footer">
+
+                {% if profile.user.role == 'student' %}
+            <div class="profile-details">
+                <h2>Personal Details</h2>
+                <p><strong>Address:</strong> {{ profile.address }}</p>
+                <p><strong>Date of Birth:</strong> {{ profile.date_of_birth }}</p>
+                <p><strong>Guardian:</strong> {{ profile.guardian_name }}</p>
+                <p><strong>Guardian Contact:</strong> {{ profile.guardian_contact }}</p>
+                <p><strong>Contact:</strong> {{ profile.contact }}</p>
+            </div>
+
+            <div class="profile-details">
+                <h2>Academic Details</h2>
+
+                <p><strong>Batch Holder:</strong> {{ profile.is_batch_holder }}</p>
+                <p><strong>Minor Subject:</strong> {{ profile.minor }}</p>
+                <p><strong>Vocational Subject:</strong> {{ profile.vocational }}</p>
+                <p><strong>Scholarship Status:</strong> {{ profile.scholarship_status }}</p>
+                <p><strong>Attendance:</strong> {{ profile.attendance_percentage }}%</p>
+            </div>
+{% endif%}
+ {% if profile.user.role == 'teacher' %}
+            <div class="profile-details">
+                <h2>Professional Details</h2>
+
+                <p><strong>Post:</strong> {{ profile.department_post }}</p>
+                <p><strong>Qualifications:</strong> {{ profile.qualification }}</p>
+                <p><strong>Specialization:</strong> {{ profile.specialization }}</p>
+                <p><strong>Experience:</strong> {{ profile.experience_years }} years</p>
+                <p><strong>Subjects Assigned:</strong> {{ profile.subjects_assigned }}</p>
+
+            </div>
+            {% endif %}
         </div>
-      </div>
-      <div class="profile-footer">
-        <div class="profile-details">
-          <h2>Details</h2>
-          <p><strong>Contact:</strong> 1234567890</p>
-          <p><strong>Date of Birth:</strong> 01 Jan 2000</p>
-          <p><strong>Address:</strong> Address details go here</p>
-          <p><strong>Guardian:</strong> Guardian Name (Guardian Contact)</p>
-          <p><strong>Scholarship Status:</strong> Active</p>
-          <p><strong>Attendance:</strong> 85%</p>
-        </div>
-        <div class="profile-details">
-          <h2>Details</h2>
-          <p><strong>Contact:</strong> 1234567890</p>
-          <p><strong>Date of Birth:</strong> 01 Jan 2000</p>
-          <p><strong>Address:</strong> Address details go here</p>
-          <p><strong>Guardian:</strong> Guardian Name (Guardian Contact)</p>
-          <p><strong>Scholarship Status:</strong> Active</p>
-          <p><strong>Attendance:</strong> 85%</p>
-        </div>
-        <div class="profile-details">
-          <h2>Details</h2>
-          <p><strong>Contact:</strong> 1234567890</p>
-          <p><strong>Date of Birth:</strong> 01 Jan 2000</p>
-          <p><strong>Address:</strong> Address details go here</p>
-          <p><strong>Guardian:</strong> Guardian Name (Guardian Contact)</p>
-          <p><strong>Scholarship Status:</strong> Active</p>
-          <p><strong>Attendance:</strong> 85%</p>
-        </div>
-      </div>
     </div>
-  </section>
+</section>
   <!-- Events Section -->
   <section class="section">
     <h2>Upcoming Events</h2>

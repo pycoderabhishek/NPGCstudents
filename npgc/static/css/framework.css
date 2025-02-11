@@ -341,14 +341,18 @@ a:hover {
 .event-form-section h2 {
   text-align: center;
 }
+form.assignment,
 form.event-form {
-  padding: 30px;
-  height:100%;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  /* justify-content: center; */
+    padding: 30px;
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    display: grid
+;
+    grid-template-columns: 23% 23% 23% 23%;
+    gap: 10px;
+    align-items: center;
+    /* justify-content: center;
 }
 
 

@@ -17,11 +17,14 @@
 </head>
 
 <body>
-    <div class="container">
+    <div class="Container">
         <div class="sidebar">
             <div class="options">
+                <!-- Link to home page -->
+                 <a href="{% url 'home' %}"><i class="fa-solid fa-house"></i></a>
+
                 <!-- Link to user profile page -->
-                <a href="{% url 'dashboard' %}"><i class="fa-regular fa-user"></i></a>
+                <a href="{% url 'dashboard' %}"><i class="fa-solid fa-user"></i></a>
 
                 <!-- Link to WhatsApp page -->
                 <a href="{% url 'whatsapp_home' %}"><i class="fa-brands fa-square-whatsapp"></i></a>

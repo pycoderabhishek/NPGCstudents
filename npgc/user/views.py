@@ -16,7 +16,7 @@ def user_login(request):
             if user is not None:
                 # Successful login, log the user in
                 login(request, user)
-                return redirect('dashboard')  # Redirect to the home page or another page
+                return redirect('home')  # Redirect to the home page or another page
             else:
                 # Authentication failed, show an error message
                 messages.error(request, "Invalid username or password")
@@ -27,6 +27,10 @@ def user_login(request):
             return render(request, 'login.html')
     else:
         return render(request, 'login.html')
+
+def home(request):
+    notifications = Notification.objects.all()
+    return render(request,'welcome/welcome_page.html',{'notifications':notifications})
 
 # Logout View
 def dashboard(request):

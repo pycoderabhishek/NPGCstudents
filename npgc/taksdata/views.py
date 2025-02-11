@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Event,Assignment
 from .forms import AssignmentForm,EventForm
+from user.models import Teacher,Student
 from department.models import Department, Course
 
 def filter_events(request):
@@ -113,7 +114,7 @@ def assignment_management(request):
     """View for managing and displaying assignments."""
     user = request.user
     is_admin_or_teacher = user.role in ['administrator', 'teacher']
-    
+
     # Handle form submission
     if request.method == 'POST':
         form = AssignmentForm(request.POST)
@@ -124,9 +125,17 @@ def assignment_management(request):
         form = AssignmentForm()
 
     # Filtering assignments based on user role
-    if user.role == 'student':
-        assignments = Assignment.objects.filter(course__students=user)
+    if not(is_admin_or_teacher):
+        profile = get_object_or_404(Student, user=user)  # Fetch Student profile
+
+        # Fetch assignments that match student's minor, course, or vocational
+        minor_assignments = Assignment.objects.filter(minor=profile.minor)
+        course_assignments = Assignment.objects.filter(course=profile.course)
+        vocational_assignments = Assignment.objects.filter(vocational=profile.vocational)
+ # Combine the assignments (removes duplicates)
+        assignments = minor_assignments | course_assignments | vocational_assignments
     elif is_admin_or_teacher:
+
         assignments = Assignment.objects.all()
     else:
         assignments = Assignment.objects.none()

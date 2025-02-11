@@ -7,6 +7,7 @@ urlpatterns = [
     path('login/', views.user_login, name='login'),
     path('logout/', views.user_logout, name='logout'),
     path('dashboard/', views.dashboard, name='dashboard'),
+    path('home',views.home,name='home'),
     path('whatsapp',include('whatsapp.urls')),
     path('events',include('taksdata.urls')),
     path('chatbot',include('chatbot.urls')),

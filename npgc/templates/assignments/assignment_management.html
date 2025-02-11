@@ -5,77 +5,108 @@
 <link rel="stylesheet" href="{% static 'css/framework.css' %}">
 <link rel="stylesheet" href="{% static 'css/basestyles.css' %}">
 <link rel="stylesheet" href="{% static 'css/form.css' %}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 <style>
-    .hidden{
-  display:none
+*{
+  font-family: "Poppins", serif;
+  font-weight: 400;
+  font-style: normal;
 }
-.event-form-section {
-  margin: 30px auto;
-  max-width: 72%;
-  display:none;
-  max-height:80vh;
-  border: 2px solid #02393e;
+.poppins-eb ,h3,h1,h2 {
+  font-family: "Poppins", serif;
+  font-weight: 800;
+  font-style: normal;
 }
+  .hidden {
+    display: none
+  }
+
+  .event-form-section {
+    margin: 30px auto;
+    max-width: 72%;
+    display: none;
+    border: 2px solid #02393e;
+  }
 
 
-        form.event-form input[type="text"],
-        form.event-form input[type="date"],
-        form.event-form select,
-        form.event-form textarea,
-        form.event-form input[type="url"] {
-          width: auto;
-          padding: 10px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
-          box-sizing: border-box;
-        }
-.msghider{
-  
-  right: 0;
-  top: 0;
-  background: #f00;
-  color: #fff;
-  border: none;
-  padding: 5px;
-  cursor: pointer;
-}
-.section{
-  margin: 30px;
+  form.event-form input[type="text"],
+  form.event-form input[type="date"],
+  form.event-form select,
+  form.event-form textarea,
+  form.event-form input[type="url"] {
+    width: auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
 
-}
-.event-manager-container h1 {
-      align-items: right;
-      display: flex  ;
+  .msghider {
+
+    right: 0;
+    top: 0;
+    background: #f00;
+    color: #fff;
+    border: none;
+    padding: 5px;
+    cursor: pointer;
+  }
+
+  .section {
+    margin: 30px;
+
+  }
+
+  .section {
+    background-color: white;
+    padding: 20px;
+    margin: 20px 0;
+  }
+
+  .event-manager-container h1 {
+    align-items: right;
+    display: flex;
   }
 </style>
 {% endblock link %}
 
 {% block content %}
-<div class="event-manager-container">
-  <h1>Assignment Manager
-    <button id="formadder" class="btn" style="position: relative; display: inline; margin-right: 0;" onclick="formhider()">
-      <i class="fa-brands fa-plus"></i>
-    </button>
-  </h1>
-  
-  {% if messages %}
-  <div class="messages">
-    {% for message in messages %}
-    <div class="message {{ message.tags }}">{{ message }} <button class="msghider" onclick="hidder()">x</button></div>
-    {% endfor %}
-  </div>
-  {% endif %}
 
-  {% if is_admin_or_teacher %}
-  <section class="event-form-section">
-    <h2>Manage Assignments</h2>
-    <form method="post" class="event-form">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <button type="submit" class="btn btn-submit">Save Assignment</button>
-    </form>
-  </section>
-  {% endif %}
+
+
+<!-- Event Form (Admin/Teacher Only) -->
+
+<div class="event-manager-container">
+  <h1>Event Manager
+    {% if is_admin_or_teacher %}
+    <button id="formadder" class="btn " style="position: relative;display: inline;margin-right: 0;"
+      onclick="formhider()"><i class="fa-brands fa-plus"></i></button>
+      {% endif %}
+  </h1>
+  <!-- Filters Section -->
+  <section class="filters-section">
+    {% if messages %}
+    <div class="messages">
+      {% for message in messages %}
+      <div class="message {{ message.tags }}">{{ message }} <button class="msghider" style="cursor: pointer;"
+          onclick="hidder">x</button></div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    {% if is_admin_or_teacher %}
+    <section class="event-form-section">
+      <h2>Manage Events</h2>
+
+      <form method="post" class="event-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-submit">Save Event</button>
+      </form>
+    </section>
+    {% endif %}
 
   <section class="filters-section">
     <h2>Filter Assignments</h2>
@@ -170,8 +201,8 @@
       x.style.display = "none";
     }
   }
- 
-       
-    
+
+
+
 </script>
-{% endblock %}
+{% endblock content%}
