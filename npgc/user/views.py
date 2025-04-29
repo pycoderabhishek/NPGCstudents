@@ -32,7 +32,7 @@ def home(request):
     notifications = Notification.objects.all()
     return render(request,'welcome/welcome_page.html',{'notifications':notifications})
 
-# Logout View
+@login_required
 def dashboard(request):
     user = request.user
     role = user.role
